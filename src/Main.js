@@ -7,12 +7,13 @@ import OneBeer from './pages/oneBeer';
 import LikedBeers from './pages/likedBeers';
 
 const Main = () => {
+    console.log("jvnewkjvnweinew")
   return (
-    <Routes> {/* The Switch decides which component to show based on the current URL.*/}
-      <Route  path='/' element={<Home />}></Route>
-      <Route  path='/oneBeer' element={<OneBeer />}></Route>
-      <Route  path='/beerList' element={<BeerList />}></Route>
-      <Route  path='/likedBeers' element={<LikedBeers />}></Route>
+    <Routes> 
+      <Route path='/' element={<Home />}></Route>
+      <Route path='/oneBeer' element={<OneBeer />}></Route>
+      <Route path='/beerList' element={<BeerList />}></Route>
+      <Route path='/likedBeers' element={<LikedBeers />}></Route>
     </Routes>
   );
 }
