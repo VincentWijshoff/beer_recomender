@@ -1,10 +1,10 @@
-
+// actually header
 const Footer = () => {
     return(
-        <div>
-            <a href="/oneBeer">One beer</a>
-            <a href="/beerList">Beer list</a>
-            <a href="/likedBeers">Liked Beers</a>
+        <div className="footer">
+            <a href="/oneBeer" className="footerItem">One beer</a>
+            <a href="/beerList" className="footerItem">Beer list</a>
+            <a href="/likedBeers" className="footerItem">Liked Beers</a>
         </div>
     );
 }

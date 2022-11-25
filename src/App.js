@@ -1,16 +1,16 @@
 import './App.css';
-// import Footer from './footer';
+import Footer from './footer';
 import Main from './Main';
 
 function App() {
   return (
-    <Main />
-    // <div className="App">
-    //   <header className="App-header">
-        
-    //     <Footer />
-    //   </header>
-    // </div>
+    
+    <div className="App">
+      <Footer /> 
+      <header className="App-header">
+        <Main />
+        </header>
+     </div>
   );
 }
 
