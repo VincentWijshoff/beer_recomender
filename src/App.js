@@ -1,16 +1,23 @@
 import './App.css';
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
+
+import Home from './pages/Home';
+import BeerList from './pages/beerList';
+import OneBeer from './pages/oneBeer';
+import LikedBeers from './pages/likedBeers';
 import Footer from './footer';
-import Main from './Main';
 
 function App() {
   return (
-    
     <div className="App">
-      <Footer /> 
-      <header className="App-header">
-        <Main />
-        </header>
-     </div>
+      <Routes> 
+        <Route path='/' element={<header className="App-header"><Home /></header>}></Route>
+        <Route path='/oneBeer' element={<><Footer /><header className="App-header"><OneBeer /></header></>}></Route>
+        <Route path='/beerList' element={<><Footer /><header className="App-header"><BeerList /></header></>}></Route>
+        <Route path='/likedBeers' element={<><Footer /><header className="App-header"><LikedBeers /></header></>}></Route>
+      </Routes>
+    </div>
   );
 }
 
