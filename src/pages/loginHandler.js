@@ -18,7 +18,7 @@ const tryLogin = async () => {
     console.log(pWord);
     // if not correct or not exist go back to home page, otherwise go to beer page
     setTimeout(() => {
-        window.location.href = "/";
+        window.location.href = "/?uid=" + 1; // fill in correct user ID
     }, 3000);
 }
 

@@ -54,7 +54,8 @@ html, body {
   justify-content: space-around;
   position:fixed;
   top:0;
-  background-color: #282c34;
+  background-color: #5511107a;
+  border: 1.5px solid #290100;
   font-size: calc(10px + 2vmin);
   color: white;
   padding-top: 10px;
@@ -62,9 +63,28 @@ html, body {
 }
 
 .footerItem {
-  border: 2px solid #271904;
+  color: #fc8c8a;
+  font-size: 64px;
+  background-color: #5311109f;
+  border: 2px solid #290100;
   border-radius: 15px;
   padding: 10px;
+}
+
+.footerItem:hover {
+	color: #000;
+	background-color:#643a39;
+}
+
+a:link { text-decoration: none; }
+a:visited { text-decoration: none; }
+a:hover { text-decoration: none; }
+a:active { text-decoration: none; }
+
+.beerbody{
+	height: 100%;
+	padding-left: 30px;
+	padding-right: 30px;
 }
 
 .LoginBody {

@@ -1,7 +1,10 @@
+import getUID from '../util/uidFetcher';
 
 const LikedBeers = () => {
+    const uid = getUID();
+    console.log(uid);
     return (
-        <div className="App">
+        <div className="beerbody">
             LIKED BEERS
         </div>
       );

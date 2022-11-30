@@ -18,7 +18,7 @@ const tryRegister = async () => {
     console.log(pWord);
     // if already taken return to homepage, otherwise go to beer page
     setTimeout(() => {
-        window.location.href = "/";
+        window.location.href = "/?uid=" + 1;
     }, 3000);
 }
 
