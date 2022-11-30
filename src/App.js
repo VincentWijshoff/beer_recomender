@@ -17,9 +17,9 @@ function App() {
         <Route path='/' element={<header className="App-header"><Home /></header>}></Route>
         <Route path='/login' element={<header className="App-header"><LoginHandler /></header>}></Route>
         <Route path='/register' element={<header className="App-header"><RegisterHandler /></header>}></Route>
-        <Route path='/oneBeer' element={<><Footer /><header className="App-header"><OneBeer /></header></>}></Route>
-        <Route path='/beerList' element={<><Footer /><header className="App-header"><BeerList /></header></>}></Route>
-        <Route path='/likedBeers' element={<><Footer /><header className="App-header"><LikedBeers /></header></>}></Route>
+        <Route path='/oneBeer' element={<><Footer /><header className="beerheader"><OneBeer /></header></>}></Route>
+        <Route path='/beerList' element={<><Footer /><header className="beerheader"><BeerList /></header></>}></Route>
+        <Route path='/likedBeers' element={<><Footer /><header className="beerheader"><LikedBeers /></header></>}></Route>
       </Routes>
     </div>
   );
