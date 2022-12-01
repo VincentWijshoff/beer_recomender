@@ -44,6 +44,7 @@ html, body {
   color: white;
 }
 
+
 .App-link {
   color: #61dafb;
 }
@@ -89,6 +90,35 @@ a:link { text-decoration: none; }
 a:visited { text-decoration: none; }
 a:hover { text-decoration: none; }
 a:active { text-decoration: none; }
+
+.initialsurveyTitle{
+	color: #fc8c8a;
+	font-size: 50px;
+	background-color: #5311109f;
+	border: 2px solid #290100;
+	border-radius: 15px;
+	padding: 10px;
+
+}
+
+.initialsurveybody{
+	height: 100%;
+	min-height: 80vh;
+	padding-left: 30px;
+	padding-right: 30px;
+	display: grid;
+	row-gap: 20px;
+	grid-template-columns: auto auto auto;
+	grid-template-rows: 15% 50% 30% 20%;
+}
+
+.questionInitialSurvey{
+	grid-column-start: 2;
+	grid-column-end: 3;
+	grid-row-start: 2;
+	grid-row-end: 5;
+	border: 10px solid #ff0400;
+}
 
 .beerbody{
 	height: 100%;
