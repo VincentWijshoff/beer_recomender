@@ -9,6 +9,7 @@ import BeerList from './pages/beerList';
 import OneBeer from './pages/oneBeer';
 import LikedBeers from './pages/likedBeers';
 import Footer from './footer';
+import InitialSurvey from './pages/initialSurvey';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path='/oneBeer' element={<><Footer /><header className="beerheader"><OneBeer /></header></>}></Route>
         <Route path='/beerList' element={<><Footer /><header className="beerheader"><BeerList /></header></>}></Route>
         <Route path='/likedBeers' element={<><Footer /><header className="beerheader"><LikedBeers /></header></>}></Route>
+        <Route path='/initialSurvey' element={<header className="beerheader"><InitialSurvey /></header>}></Route>
       </Routes>
     </div>
   );
