@@ -3,11 +3,10 @@ import json
 import os
 from glob import glob
 
-current_page = 1
 def persist(b: json):
-    global current_page
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
+    current_page = b['currentPage']
     output_filename = os.path.join(output_dir, f'beer_{current_page}.json')
     print('-', output_filename)
     with open(output_filename, 'w', encoding='utf-8') as w:
@@ -17,13 +16,25 @@ def persist(b: json):
 
 usefullIds = [4, 5, 7]
 output_dir = 'filtered-database'
+current_page = 1
+amount_on_page = 0
+b = {}
+b['currentPage'] = 1
+b['data'] = []
 
-for i in range(1,104):
+for i in range(1,604):
     ratings_data = pd.read_json('./beer-dataset/beer-database/beer_' + str(i) + '.json').data
     for d in ratings_data:
         cat = d.get('style').get('category')
         if cat.get('id') in usefullIds:
-            persist(d)
+            b['data'] = b['data'] + [d]
+            amount_on_page += 1
+            if amount_on_page > 49:
+                amount_on_page = 0
+                persist(b)
+                b['currentPage'] += 1
+                b['data'] = []
+
 
 
 
