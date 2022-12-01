@@ -140,6 +140,13 @@ a:active { text-decoration: none; }
 	justify-content: center;
 }
 
+.likedislikelist{
+	grid-column-start: 3;
+	grid-column-end: 4;
+	display: flex;
+	justify-content: center;
+}
+
 .beerlistdescription{
 	grid-column-start: 3;
 	grid-column-end: 4;
