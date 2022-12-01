@@ -117,6 +117,36 @@ a:active { text-decoration: none; }
 	grid-row-end: 3;
 }
 
+.topx{
+	display:grid;
+	grid-template-columns: 20% auto auto;
+}
+
+.beerlistpicture{
+	grid-column-start: 1;
+	grid-column-end: 2;
+}
+
+.beerlistname{
+	grid-column-start: 2;
+	grid-column-end: 3;
+	border-right: 3px solid #fcae49;
+	border-left: 3px solid #fcae49;
+	padding-left: 2px;
+	padding-right: 2px;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.beerlistdescription{
+	grid-column-start: 3;
+	grid-column-end: 4;
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
 .beerlistitem{
 	min-height: 100px;
 	width: 100%;
@@ -124,6 +154,7 @@ a:active { text-decoration: none; }
 	padding: 10px;
 	border: 3px solid #fcae49;
 	border-radius: 15px;
+	color: pink;
 }
 
 .beerpicture{
