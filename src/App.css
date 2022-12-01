@@ -68,8 +68,8 @@ html, body {
   background-color: #5511107a;
   border: 1.5px solid #290100;
   font-size: calc(10px + 2vmin);
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding-top: 2px;
+  padding-bottom: 2px;
 }
 
 .footerItem {
@@ -78,7 +78,7 @@ html, body {
   background-color: #5311109f;
   border: 2px solid #290100;
   border-radius: 15px;
-  padding: 10px;
+  padding: 6px;
 }
 
 .footerItem:hover {
@@ -128,23 +128,70 @@ a:active { text-decoration: none; }
 }
 .onebeerbody{
 	display: grid;
-	row-gap: 20px;
+	row-gap: 15px;
 	grid-template-columns: auto auto auto;
 	grid-template-rows: 15% 50% 30% 20%;
 }
 .beerlistbody{
-	display: grid;
-	row-gap: 20px;
+	display:grid;
 	grid-template-columns: auto auto auto;
-	grid-template-rows: 15% repeat(4, auto);
+	grid-template-rows: 90px auto;
 }
 
-.beerlistitem{
+.beerlist{
+	padding-top: 5px;
+	margin-bottom: 10px;
 	grid-column-start: 2;
 	grid-column-end: 3;
 	grid-row-start: 2;
 	grid-row-end: 3;
-	border: 10px solid #ff0400;
+}
+
+.topx{
+	display:grid;
+	grid-template-columns: 20% auto auto;
+}
+
+.beerlistpicture{
+	grid-column-start: 1;
+	grid-column-end: 2;
+}
+
+.beerlistname{
+	grid-column-start: 2;
+	grid-column-end: 3;
+	border-right: 3px solid #fcae49;
+	border-left: 3px solid #fcae49;
+	padding-left: 2px;
+	padding-right: 2px;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.likedislikelist{
+	grid-column-start: 3;
+	grid-column-end: 4;
+	display: flex;
+	justify-content: center;
+}
+
+.beerlistdescription{
+	grid-column-start: 3;
+	grid-column-end: 4;
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+.beerlistitem{
+	min-height: 100px;
+	width: 100%;
+	margin-top: 10px;
+	padding: 10px;
+	border: 3px solid #fcae49;
+	border-radius: 15px;
+	color: pink;
 }
 
 .beerpicture{
@@ -152,7 +199,9 @@ a:active { text-decoration: none; }
 	grid-column-end: 3;
 	grid-row-start: 2;
 	grid-row-end: 3;
-	border: 10px solid #ff0400;
+	/* border: 10px solid #fcae49; */
+	display: flex;
+	justify-content: center;
 }
 
 .beerdescription{
@@ -160,7 +209,9 @@ a:active { text-decoration: none; }
 	grid-column-end: 3;
 	grid-row-start: 3;
 	grid-row-end: 4;
-	border: 10px solid #ff0400;
+	border: 3px solid #fcae49;
+	border-radius: 15px;
+	padding: 10px;
 }
 
 .likedislike{
@@ -168,7 +219,8 @@ a:active { text-decoration: none; }
 	grid-column-end: 3;
 	grid-row-start: 4;
 	grid-row-end: 5;
-	border: 10px solid #ff0400;
+	display: flex;
+	justify-content: center;
 }
 
 .LoginBody {
@@ -261,4 +313,42 @@ button:hover{
 }
 #chk:checked ~ .signup label{
 	transform: scale(.6);
+}
+
+/* star rating scheme */
+
+.rate {
+    float: left;
+    height: 100px;
+    padding: 0 10px;
+}
+.rate:not(:checked) > input {
+    position:absolute;
+    top:-9999px;
+}
+.rate:not(:checked) > label {
+    float:right;
+    width:1em;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:pointer;
+    font-size:50px;
+    color:#ccc;
+}
+.rate:not(:checked) > label:before {
+    content: '★ ';
+}
+.rate > input:checked ~ label {
+    color: #ffc700;    
+}
+.rate:not(:checked) > label:hover,
+.rate:not(:checked) > label:hover ~ label {
+    color: #deb217;  
+}
+.rate > input:checked + label:hover,
+.rate > input:checked + label:hover ~ label,
+.rate > input:checked ~ label:hover,
+.rate > input:checked ~ label:hover ~ label,
+.rate > label:hover ~ input:checked ~ label {
+    color: #c59b08;
 }
