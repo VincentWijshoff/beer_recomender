@@ -1,8 +1,13 @@
 import pandas as pd
 import json
 import os
-from glob import glob
 
+#################################################################
+#       Run this once after cloning the beer dataset            #
+#   Beer dataset: https://github.com/philipperemy/beer-dataset  #
+#################################################################
+
+# Writes data to json file
 def persist(b: json):
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
@@ -14,6 +19,7 @@ def persist(b: json):
     current_page += 1
 
 
+# Filter beers to only be of the category Ids in usefullIds and write to output_dir
 usefullIds = [4, 5, 7]
 output_dir = 'filtered-database'
 current_page = 1
@@ -34,11 +40,3 @@ for i in range(1,604):
                 persist(b)
                 b['currentPage'] += 1
                 b['data'] = []
-
-
-
-
-
-
-# for i in range(1,len(cats.keys())+1):
-#     print(str(i) + ' ' + cats[i])

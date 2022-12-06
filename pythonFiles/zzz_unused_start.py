@@ -2,23 +2,27 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
-ratings_data = pd.read_json('./beer-dataset/beer-database/beer_1.json').data
+# Used when discovering dataset, not needed anymore.
 
+# Find all categories 
 cats = {} 
 for i in range(1,604):
-    ratings_data = pd.read_json('./beer-dataset/beer-database/beer_' + str(i) + '.json').data
+    ratings_data = pd.read_json('./pythonFiles/beer-dataset/beer-database/beer_' + str(i) + '.json').data
     for d in ratings_data:
         cat = d.get('style').get('category')
-        # print(cat)
         if cat.get('id') not in cats.keys():
-            cats[cat.get('id')] =  cat.get('name')
+            cats[int(cat.get('id'))] =  cat.get('name')
 
-for i in range(1,len(cats.keys())+1):
+# Print category ids and mathing name
+temp = list(cats.keys())
+temp.sort() 
+for i in temp:
     print(str(i) + ' ' + cats[i])
 
+# Count amount of beers per category
 cats2 = {} 
 for i in range(1,604):
-    ratings_data = pd.read_json('./beer-dataset/beer-database/beer_' + str(i) + '.json').data
+    ratings_data = pd.read_json('./pythonFiles/beer-dataset/beer-database/beer_' + str(i) + '.json').data
     for d in ratings_data:
         cat = d.get('style').get('category')
         # print(cat)
@@ -27,8 +31,6 @@ for i in range(1,604):
         else: 
             cats2[cat.get('id')] +=  1
 
+# And print
 for i in range(1,len(cats.keys())+1):
     print(cats[i] + ' ' + str(cats2[i]))
-
-# reader = Reader(rating_scale=(1, 5))
-# data = Dataset.load_from_df(ratings_data[['user_id', 'book_id', 'rating']], reader)
