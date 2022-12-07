@@ -97,7 +97,7 @@ a:active { text-decoration: none; }
 	background-color: #5311109f;
 	border: 2px solid #290100;
 	border-radius: 15px;
-	padding: 10px;
+	padding: 6px;
 
 }
 
@@ -109,16 +109,53 @@ a:active { text-decoration: none; }
 	display: grid;
 	row-gap: 20px;
 	grid-template-columns: auto auto auto;
-	grid-template-rows: 15% 50% 30% 20%;
+	grid-template-rows: 15% 10% 30% 20%;
+	
 }
 
 .questionInitialSurvey{
 	grid-column-start: 2;
 	grid-column-end: 3;
 	grid-row-start: 2;
-	grid-row-end: 5;
-	border: 10px solid #ff0400;
+	grid-row-end:3;
+	border: 3px solid #fcae49;
+	border-radius: 15px;
+	padding: 10px;
+	text-align: center;
 }
+
+.answerInitialSurvey{
+	padding-top: 5px;
+	margin-bottom: 10px;
+	grid-column-start: 2;
+	grid-column-end: 3;
+	grid-row-start: 3;
+	grid-row-end: 4;
+}
+
+.answerInitialSurvey:hover{
+	cursor:pointer;
+}
+
+.answerlistitem{
+	min-height: 100px;
+	/* width: 100%; */
+	margin: 0 auto;
+	width:300px;
+	margin-top: 10px;
+	padding: 10px;
+	border: 3px solid #fcae49;
+	border-radius: 15px;
+	color: pink;
+	text-align: center;
+}
+
+.div1 {
+	background-color: red;
+	width: 200pt;
+	height:200pt;
+}
+
 
 .beerbody{
 	height: 100%;
@@ -390,3 +427,4 @@ button:hover{
 	.rating:hover > input:checked ~ label:before{ 
 	opacity: 0.4;
 	 }
+
