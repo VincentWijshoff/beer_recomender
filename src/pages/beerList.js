@@ -2,18 +2,17 @@ import getUID from '../util/uidFetcher';
 
 const BeerList = () => {
     const uid = getUID();
-    console.log(uid);
-    let beerlist = [{name: "peter"}, {name: "abraham"}, {name: "constantijn"}, {name: "constantijn"}, {name: "constantijn"}, {name: "constantijn"}, {name: "constantijn"}];
+    const beerlist = getBeerList(uid);
     return (
         <div className="beerbody beerlistbody">
             <div className="beerlist">
             {beerlist.map(item => {
                 return (
-                    <a href={"/onebeer?uid=" + uid + "&beerid=" + item.beerid}>
+                    <a href={"/onebeer?uid=" + uid + "&beerid=" + item.id}>
                         <div className="beerlistitem topx">
-                            <div className="beerlistpicture">picture</div>
-                            <div className="beerlistname">name</div>
-                            <div className="beerlistdescription">description</div>    
+                            <div className="beerlistpicture">{item.picture}</div>
+                            <div className="beerlistname">{item.name}</div>
+                            <div className="beerlistdescription">{item.description}</div>    
                         </div>
                     </a>
                 )
@@ -21,6 +20,19 @@ const BeerList = () => {
             </div>
         </div>
       );
+}
+
+const getBeerList = (uid) => {
+    // get the beer list for the given uid
+    console.log(uid);
+    return [{picture: "picture", name: "Placeholder name", description:"description placeholder", id:1}, 
+    {picture: "picture", name: "Placeholder name", description:"description placeholder", id:1}, 
+    {picture: "picture", name: "Placeholder name", description:"description placeholder", id:1},
+    {picture: "picture", name: "Placeholder name", description:"description placeholder", id:1},
+    {picture: "picture", name: "Placeholder name", description:"description placeholder", id:1},
+    {picture: "picture", name: "Placeholder name", description:"description placeholder", id:1},
+    {picture: "picture", name: "Placeholder name", description:"description placeholder", id:1},
+    {picture: "picture", name: "Placeholder name", description:"description placeholder", id:1}];
 }
 
 export default BeerList;
