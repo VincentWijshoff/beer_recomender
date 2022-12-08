@@ -1,8 +1,10 @@
+import getBeerId from '../util/beerIDFeetcher';
 import getUID from '../util/uidFetcher';
 
 const OneBeer = () => {
     const uid = getUID();
-    const data = getBeerData(uid);
+    const beerID = getBeerId();
+    const data = getBeerData(uid, beerID);
     return (
         <div className="beerbody onebeerbody">
             {/* we need a picture of a beer */}
@@ -31,7 +33,10 @@ const OneBeer = () => {
       );
 }
 
-const getBeerData = (uid) => {
+const getBeerData = (uid, beerid) => {
+    if(beerid){
+        // get the beer from the given ID
+    }
     // get the next recommended beer for this person
     console.log(uid);
     return {name: "placeholder name", image:"placeholder image", explenation:"This is the explenation", id:1}
