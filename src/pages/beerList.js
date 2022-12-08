@@ -1,8 +1,16 @@
+import makeRequest from '../util/requestHandler';
 import getUID from '../util/uidFetcher';
+import { useEffect, useState } from 'react';
 
 const BeerList = () => {
     const uid = getUID();
-    const beerlist = getBeerList(uid);
+    const [beerlist, setdata] = useState([]);
+    useEffect(() => {
+        const uid = getUID();
+        getBeerList(uid).then((res) => {
+            setdata(res);
+        })
+    }, []);
     return (
         <div className="beerbody beerlistbody">
             <div className="beerlist">
@@ -24,15 +32,7 @@ const BeerList = () => {
 
 const getBeerList = (uid) => {
     // get the beer list for the given uid
-    console.log(uid);
-    return [{picture: "picture", name: "Placeholder name", description:"description placeholder", id:1}, 
-    {picture: "picture", name: "Placeholder name", description:"description placeholder", id:1}, 
-    {picture: "picture", name: "Placeholder name", description:"description placeholder", id:1},
-    {picture: "picture", name: "Placeholder name", description:"description placeholder", id:1},
-    {picture: "picture", name: "Placeholder name", description:"description placeholder", id:1},
-    {picture: "picture", name: "Placeholder name", description:"description placeholder", id:1},
-    {picture: "picture", name: "Placeholder name", description:"description placeholder", id:1},
-    {picture: "picture", name: "Placeholder name", description:"description placeholder", id:1}];
+    return makeRequest("/beerlistforuser/" + uid);
 }
 
 export default BeerList;
