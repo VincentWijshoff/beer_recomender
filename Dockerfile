@@ -1,5 +1,5 @@
 # pull official base image
-FROM node:13.12.0-alpine
+FROM node:16
 
 # set working directory
 WORKDIR /app
@@ -17,5 +17,11 @@ RUN npm install react-scripts@3.4.1 -g --silent
 COPY ./public ./public
 COPY ./src ./src
 
-# start app
-CMD ["npm", "start"]
+
+CMD ["npm", "run", "start"]
+# Production build does not work :(
+# RUN npm run build
+# RUN npm install -g serve
+
+# # start app
+# CMD ["serve", "-s", "build"]

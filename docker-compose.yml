@@ -9,15 +9,9 @@ services:
       dockerfile: Dockerfile
     ports:
       - 6969:3000
-    depends_on:
-      - backend
-    links:
-      - backend
   
   backend:
     container_name: beer_backend
     build:
       context: .
       dockerfile: Dockerfile.python
-    ports:
-      - 8080:8080
