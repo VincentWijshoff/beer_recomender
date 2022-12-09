@@ -1,12 +1,13 @@
 from flask import Flask, json
-from pythonFiles.generate_recommendation import generate_recommendation
-from pythonFiles.getBeerByID import getBeerByID
+from generate_recommendation import generate_recommendation
+from getBeerByID import getBeerByID
+from user import user
 
 api = Flask(__name__)
 
 
 #  get the beer from the given ID
-@api.route('/beerfromid/<int:beerid>', methods=['GET'])
+@api.route('/beerfromid/<beerid>', methods=['GET'])
 def get_beer_from_id(beerid):
   beer = getBeerByID(beerid)
   return json.dumps({"name": beer["nameDisplay"], "image": beer["labels"]["large"], "explenation":"This is the explenation", "id":1})
@@ -15,9 +16,13 @@ def get_beer_from_id(beerid):
 #  get the next recommended beer for this person
 @api.route('/nextbeerforuser/<int:uid>', methods=['GET'])
 def get_next_beer_from_id(uid):
-  beer = generate_recommendation(uid)
+  u = getUserById(uid)
+  beer = generate_recommendation(u)
   return json.dumps({"name": beer["nameDisplay"], "image": beer["labels"]["large"], "explenation":"This is the explenation", "id":1})
 
+def getUserById(uid):
+  # TODO: replace
+  return users[0]
 
 #  get the beer list for given user
 @api.route('/beerlistforuser/<int:uid>', methods=['GET'])
@@ -49,5 +54,10 @@ def like_beer_from_id(beerid, uid):
 
 if __name__ == '__main__':
     # api.run(debug=True)
+    # TODO remove
+    users = []
+    u1 = user(1)
+    users.append(u1)
+    u1.addPreference(getBeerByID("s8rdpK"))
     from waitress import serve
     serve(api, host="0.0.0.0", port=8080)
