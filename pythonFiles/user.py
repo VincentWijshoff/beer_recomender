@@ -1,8 +1,11 @@
+from constants import *
+
+
 class user:
     """Represents an application user, still needs work"""
     # Preference: 
-    #   - Organic: 1/0
-    #   - glassWareID: id in range 0 -> 10, 13->14 OR None
+    #   - organic: 1/0
+    #   - glasswareId: id in range 0 -> 10, 13->14 OR None
     #   - styleId: id in range 45 -> 92 or 159
     #   - servingTemperature: Cold, Cool, Cellar, Warm OR None
     #   - abv: alcoholperc, tss 0,0 en 19,4 OR None 
@@ -68,16 +71,65 @@ class user:
         else:
             self.preferences["srmId"] += int(preference["srmId"])
 
+    def getOrganicPref(self):
+        o = self.preferences.get("organic")
+        if o is None:
+            return 0.5
+        else:
+            return o/self.amount
 
+    def getGlassWarePref(self, id):
+        g = self.preferences.get("glasswareId")
+        if g is None:
+            return 0.5
+        else:
+            g = g.get(id)
+            if g is None:
+                return 0
+            else:
+                return g/self.amount
 
+    def getStyleIdPref(self, id):
+        g = self.preferences.get("styleId")
+        if g is None:
+            return 0.5
+        else:
+            g = g.get(id)
+            if g is None:
+                return 0
+            else:
+                return g/self.amount
 
+    def getServingTempPref(self, id):
+        g = self.preferences.get("servingTemperature")
+        if g is None:
+            return 0.5
+        else:
+            g = g.get(id)
+            if g is None:
+                return 0
+            else:
+                return g/self.amount
 
+    def getAbvPref(self):
+        o = self.preferences.get("abv")
+        if o is None:
+            return MAX_ABV/2
+        else:
+            return o/self.amount
 
+    def getIbuPref(self):
+        o = self.preferences.get("ibu")
+        if o is None:
+            return MAX_IBU/2
+        else:
+            return o/self.amount
 
-
-
-
-
-
+    def getSrmPref(self):
+        o = self.preferences.get("srmId")
+        if o is None:
+            return (MAX_SRM-MIN_SRM)/2
+        else:
+            return o/self.amount
 
 
