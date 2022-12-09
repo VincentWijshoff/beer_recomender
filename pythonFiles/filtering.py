@@ -19,9 +19,11 @@ def persist(b: json):
     current_page += 1
 
 
-# Filter beers to only be of the category Ids in usefullIds and write to output_dir
+# Filter beers to only be of the category Ids in usefullIds and to have the properties in requiredKeys 
+# Then write to output_dir
 usefullIds = [4, 5, 7]
-output_dir = 'filtered-database'
+requiredKeys = ["isOrganic", "glasswareId", "styleId", "servingTemperature", "abv", "ibu", "srmId"] 
+output_dir = 'pythonFiles/filtered-database2'
 current_page = 1
 amount_on_page = 0
 b = {}
@@ -29,10 +31,16 @@ b['currentPage'] = 1
 b['data'] = []
 
 for i in range(1,604):
-    ratings_data = pd.read_json('./beer-dataset/beer-database/beer_' + str(i) + '.json').data
+    ratings_data = pd.read_json('./pythonFiles/beer-dataset/beer-database/beer_' + str(i) + '.json').data
     for d in ratings_data:
+        good = 0
+        for k in requiredKeys:
+            if d.get(k) is None:
+                break
+            else:
+                good += 1
         cat = d.get('style').get('category')
-        if cat.get('id') in usefullIds:
+        if cat.get('id') in usefullIds and good == len(requiredKeys):
             b['data'] = b['data'] + [d]
             amount_on_page += 1
             if amount_on_page > 49:
