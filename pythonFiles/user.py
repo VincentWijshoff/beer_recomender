@@ -11,7 +11,7 @@ class user:
     #   - abv: alcoholperc, tss 0,0 en 19,4 OR None 
     #   - ibu: bitterheid, schaal van 0 tot 120
     #   - srmId: kleur, schaal van 1 -> 41
-    def __init__(self, id, preferences: dict):
+    def __init__(self, id, preferences: dict = {}):
         self.id = id                        # User ID
         self.preferences = preferences      # User preferences
         self.amount = 0                     # Amount of preferences stored  
