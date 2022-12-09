@@ -4,6 +4,7 @@ from user import user
 
 def getSimilarity(u:user, rating_data):
     """Generate similarity number for user profile and beer"""
+    # TODO: possibly add weights to factors? 
     factor = 0
 
     organicFactor = u.getOrganicPref()
@@ -16,8 +17,8 @@ def getSimilarity(u:user, rating_data):
     factor += u.getServingTempPref(rating_data["servingTemperature"])
 
     abvFactor = u.getAbvPref()
-    abvDist = abs(abvFactor - float(rating_data["abv"]))/MAX_ABV
-    factor += 1 - abvDist
+    abvDist = abs(abvFactor - float(rating_data["abv"]))/MAX_ABV # Distance in [0,1]
+    factor += 1 - abvDist 
 
     ibuFactor = u.getIbuPref()
     ibuDist = abs(ibuFactor - float(rating_data["ibu"]))/MAX_IBU
