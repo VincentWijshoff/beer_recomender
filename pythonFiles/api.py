@@ -1,4 +1,6 @@
 from flask import Flask, json
+from pythonFiles.generate_recommendation import generate_recommendation
+from pythonFiles.getBeerByID import getBeerByID
 
 api = Flask(__name__)
 
@@ -6,13 +8,15 @@ api = Flask(__name__)
 #  get the beer from the given ID
 @api.route('/beerfromid/<int:beerid>', methods=['GET'])
 def get_beer_from_id(beerid):
-  return json.dumps({"name": "name id", "image":"placeholder image", "explenation":"This is the explenation", "id":1})
+  beer = getBeerByID(beerid)
+  return json.dumps({"name": beer["nameDisplay"], "image": beer["labels"]["large"], "explenation":"This is the explenation", "id":1})
 
 
 #  get the next recommended beer for this person
 @api.route('/nextbeerforuser/<int:uid>', methods=['GET'])
 def get_next_beer_from_id(uid):
-  return json.dumps({"name": "placeholder name", "image":"placeholder image", "explenation":"This is the explenation", "id":1})
+  beer = generate_recommendation(uid)
+  return json.dumps({"name": beer["nameDisplay"], "image": beer["labels"]["large"], "explenation":"This is the explenation", "id":1})
 
 
 #  get the beer list for given user
