@@ -28,3 +28,4 @@ pythonFiles/beer-dataset/*
 pythonFiles/filtered-database/*
 __pycache__/*
 pythonFiles/idDict.pkl
+pythonFiles/__pycache__/*
