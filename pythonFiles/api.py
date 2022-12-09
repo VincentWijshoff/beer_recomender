@@ -27,6 +27,7 @@ def getUserById(uid):
 #  get the beer list for given user
 @api.route('/beerlistforuser/<int:uid>', methods=['GET'])
 def get_beer_list_from_id(uid):
+  # TODO find way to generate list call it here
   return json.dumps([{"picture": "picture", "name": "Placeholder name", "description":"description placeholder", "id":1},
   {"picture": "picture", "name": "Placeholder name", "description":"description placeholder", "id":1},
   {"picture": "picture", "name": "Placeholder name", "description":"description placeholder", "id":1},
@@ -38,6 +39,7 @@ def get_beer_list_from_id(uid):
 #  get the list of liked beers for the user
 @api.route('/likedbeersforuser/<int:uid>', methods=['GET'])
 def get_liked_beers_from_id(uid):
+  # TODO: Add list of liked beer ids to user & return it here
   return json.dumps([{"picture": "picture", "name": "Placeholder name", "id":1},
   {"picture": "picture", "name": "Placeholder name", "id":1},
   {"picture": "picture", "name": "Placeholder name", "id":1},
@@ -49,6 +51,10 @@ def get_liked_beers_from_id(uid):
 #  like a beer and get the next one
 @api.route('/likebeer/<int:beerid>/<int:uid>', methods=['GET'])
 def like_beer_from_id(beerid, uid):
+  # TODO: Add list of liked beer ids to user &  add this beerid to it
+  u = getUserById(uid)
+  beer = getBeerByID(beerid)
+  u.addPreference(beer)
   return json.dumps({"name": "name id", "image":"placeholder image", "explenation":"This is the explenation", "id":1})
 
 
