@@ -24,8 +24,9 @@ yarn-error.log*
 
 
 # Python
-pythonFiles/beer-dataset/*
+# pythonFiles/beer-dataset/* # just put the raw data on the github
 pythonFiles/filtered-database/*
+pythonFiles/filtered-database2/*
 __pycache__/*
 pythonFiles/idDict.pkl
 pythonFiles/__pycache__/*
