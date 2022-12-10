@@ -137,6 +137,23 @@ a:active { text-decoration: none; }
 	cursor:pointer;
 }
 
+.nextQuestionButton{
+	background-color: #5511107a;
+	color: pink;
+	text-align: center;
+	grid-column-start: 2;
+	grid-column-end: 3;
+}
+
+.divNextQuestion{
+	
+	margin-top: 30pt;
+	background-color: #5511107a;
+	color: pink;
+	height: 40pt;
+	
+}
+
 .answerlistitem{
 	min-height: 100px;
 	/* width: 100%; */
