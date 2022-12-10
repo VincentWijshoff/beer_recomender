@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import getBeerId from '../util/beerIDFeetcher';
 import makeRequest from '../util/requestHandler';
 import getUID from '../util/uidFetcher';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faThumbsUp, faThumbsDown } from '@fortawesome/free-solid-svg-icons'
 
 const OneBeer = () => {
     const [data, setdata] = useState({
@@ -29,18 +31,8 @@ const OneBeer = () => {
             </div>
             {/* then a like/dislike button */}
             <div className="likedislike">
-            <div className="rate">
-                <input type="radio" id="star5" name="rate" value="5" onClick={() => rating(data.id,  uid)}/>
-                <label htmlFor="star5" title="text">5 stars</label>
-                <input type="radio" id="star4" name="rate" value="4" onClick={() => rating(data.id,  uid)}/>
-                <label htmlFor="star4" title="text">4 stars</label>
-                <input type="radio" id="star3" name="rate" value="3" onClick={() => rating(data.id,  uid)}/>
-                <label htmlFor="star3" title="text">3 stars</label>
-                <input type="radio" id="star2" name="rate" value="2" onClick={() => rating(data.id,  uid)}/>
-                <label htmlFor="star2" title="text">2 stars</label>
-                <input type="radio" id="star1" name="rate" value="1" onClick={() => rating(data.id,  uid)}/>
-                <label htmlFor="star1" title="text">1 star</label>
-            </div>
+            <button className="likedislikebutton" id="green" onClick={() => {likeBeer(data.id, uid)}}><FontAwesomeIcon icon={faThumbsUp}/></button>
+            <button className="likedislikebutton" id="red" onClick={() => {dislikeBeer(data.id, uid)}}><FontAwesomeIcon icon={faThumbsDown} /></button>
             </div>
         </div>
       );
@@ -55,10 +47,15 @@ const getBeerData = async (uid, beerid) => {
     return makeRequest("/nextbeerforuser/" + uid);
 }
 
-const rating = (beerID, uid) => {
+const likeBeer = (beerID, uid) => {
     // send to DB and reload page with new beer
     makeRequest("/likebeer/" + beerID + "/" + uid);
-    //TODO dislike request?
+    window.location.href = "/oneBeer?uid=" + uid;
+}
+
+const dislikeBeer = (beerID, uid) => {
+    // send to DB and reload page with new beer
+    makeRequest("/dislikebeer/" + beerID + "/" + uid);
     window.location.href = "/oneBeer?uid=" + uid;
 }
 

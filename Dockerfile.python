@@ -2,12 +2,12 @@ FROM python:3
 
 WORKDIR /app
 
-COPY ./pythonFiles/*.py ./pythonFiles/
-COPY ./pythonFiles/beer-dataset ./pythonFiles/beer-dataset
-
 RUN pip install flask
 RUN pip install waitress
 RUN pip install pandas
+
+COPY ./pythonFiles/*.py ./pythonFiles/
+COPY ./pythonFiles/beer-dataset ./pythonFiles/beer-dataset
 
 RUN python ./pythonFiles/filtering.py
 RUN python ./pythonFiles/generateDict.py

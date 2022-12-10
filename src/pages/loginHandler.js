@@ -1,4 +1,5 @@
 import logo from '../logo.svg';
+import makeRequest from '../util/requestHandler';
 
 const LoginHandler = () => {
     tryLogin();
@@ -14,12 +15,12 @@ const tryLogin = async () => {
     const urlParams = new URLSearchParams(queryString);
     const uName = urlParams.get('username');
     const pWord = urlParams.get('pswd');
-    console.log(uName);
-    console.log(pWord);
-    // if not correct or not exist go back to home page, otherwise go to beer page
-    setTimeout(() => {
-        window.location.href = "/?uid=" + 1; // fill in correct user ID
-    }, 3000);
+    let response = await makeRequest("/login/"+uName+"/"+pWord); // {response: boolean, uid: string}
+    if(response.response) {
+        window.location.href = "/oneBeer?uid=" + response.uid;
+        return;
+    }
+    window.location.href ="/";
 }
 
 export default LoginHandler;

@@ -1,4 +1,5 @@
 import logo from '../logo.svg';
+import makeRequest from '../util/requestHandler';
 
 const RegisterHandler = () => {
     tryRegister();
@@ -14,12 +15,8 @@ const tryRegister = async () => {
     const urlParams = new URLSearchParams(queryString);
     const uName = urlParams.get('txt');
     const pWord = urlParams.get('pswd');
-    console.log(uName);
-    console.log(pWord);
-    // if already taken return to homepage, otherwise go to beer page
-    setTimeout(() => {
-        window.location.href = "/?uid=" + 1;
-    }, 3000);
+    let response = await makeRequest("/register/"+uName+"/"+pWord); // {uid: string}
+    window.location.href = "/oneBeer?uid=" + response.uid;
 }
 
 export default RegisterHandler;

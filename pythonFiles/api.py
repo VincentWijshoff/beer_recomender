@@ -48,14 +48,42 @@ def get_liked_beers_from_id(uid):
   {"picture": "picture", "name": "Placeholder name", "id":1}])
 
 
-#  like a beer and get the next one
+#  like a beer
 @api.route('/likebeer/<int:beerid>/<int:uid>', methods=['GET'])
 def like_beer_from_id(beerid, uid):
   # TODO: Add list of liked beer ids to user &  add this beerid to it
   u = getUserById(uid)
   beer = getBeerByID(beerid)
   u.addPreference(beer)
-  return json.dumps({"name": "name id", "image":"placeholder image", "explenation":"This is the explenation", "id":1})
+  return json.dumps({})
+
+
+#  dislike a beer
+@api.route('/dislikebeer/<int:beerid>/<int:uid>', methods=['GET'])
+def dislike_beer_from_id(beerid, uid):
+  # TODO: Add list of liked beer ids to user &  remove this
+  return json.dumps({})
+
+
+# login
+@api.route('/login/<string:uName>/<string:pWord>', methods=['GET'])
+def login(uName, pWord):
+  # TODO: check if user exists and return their ID
+  return json.dumps({"response": True, "uid": 1})
+
+
+# register
+@api.route('/register/<string:uName>/<string:pWord>', methods=['GET'])
+def register(uName, pWord):
+  # TODO: create new user and return their ID
+  return json.dumps({"uid": 1})
+
+
+# remove liked beer
+@api.route('/removelikedbeer/<string:beerid>/<string:uid>', methods=['GET'])
+def remove_beer_from_user(beerid, uid):
+  # TODO: remove liked beer from user
+  return json.dumps({})
 
 
 if __name__ == '__main__':

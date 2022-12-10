@@ -204,7 +204,7 @@ a:active { text-decoration: none; }
 .topx{
 	width: 100%;
 	display:grid;
-	grid-template-columns: 20% 40% auto;
+	grid-template-columns: 30% 50% auto;
 }
 
 .beerlistpicture{
@@ -275,7 +275,7 @@ a:active { text-decoration: none; }
 	grid-row-start: 4;
 	grid-row-end: 5;
 	display: flex;
-	justify-content: center;
+	justify-content: space-around;
 }
 
 .LoginBody {
@@ -324,7 +324,7 @@ input{
 	outline: none;
 	border-radius: 5px;
 }
-button{
+.button{
 	width: 60%;
 	height: 40px;
 	margin: 10px auto;
@@ -341,8 +341,25 @@ button{
 	transition: .2s ease-in;
 	cursor: pointer;
 }
-button:hover{
+.button:hover{
 	background: #6d44b8;
+}
+
+.likedislikebutton {
+	width: 100px;
+	font-size: 48px;
+	color: rgb(242, 242, 255);
+	background: none;
+	border: none;
+	cursor:pointer;
+}
+.deletebutton{
+	width: 100px;
+	font-size: 48px;
+	color: rgb(255, 7, 7);
+	background: none;
+	border: none;
+	cursor:pointer;
 }
 .login{
 	height: 450px;
