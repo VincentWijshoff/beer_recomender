@@ -7,6 +7,11 @@ def getSimilarity(u:user, rating_data):
     # TODO: possibly add weights to factors? 
     factor = 0
 
+
+    # TODO: remove: 
+    if len(u.getLikedBeers()) == 0:
+        return 1
+
     organicFactor = u.getOrganicPref()
     factor += organicFactor if rating_data["isOrganic"] == "Y" else (1-organicFactor)
 

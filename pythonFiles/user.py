@@ -1,4 +1,5 @@
 from constants import *
+from getBeerByID import getBeerByID
 
 
 class user:
@@ -14,8 +15,33 @@ class user:
     def __init__(self, id, preferences: dict = {}):
         self.id = id                        # User ID
         self.preferences = preferences      # User preferences
-        self.amount = 0                     # Amount of preferences stored  
+        self.amount = 0                     # Amount of preferences stored
+        self.likedBeers = []                # Beers the user has indicated they like
+        self.dislikedBeers = []             # Beers the user has indicated they don't like 
     
+    def getLikedBeers(self):
+        ''' Get this users liked beers'''
+        return self.likedBeers
+
+    def likeBeer(self, beerId):
+        ''' Add a beer to liked beers'''
+        b = getBeerByID(beerId)
+        self.addPreference(b)
+        self.likedBeers.append(beerId)
+
+    def dislikeBeer(self, beerId):
+        ''' Add a beer to disliked beers '''
+        self.dislikedBeers.append(beerId)
+
+    def removeLikedBeer(self, beerId):
+        '''Remove the beer with beerId from liked beers if it is in there'''
+        if beerId in self.likedBeers:
+            self.likedBeers.remove(beerId)
+
+    def hasSeen(self,beerId):
+        '''Find out if this user has already seen and liked/disliked this beer'''
+        return beerId in self.likeBeer or beerId in self.dislikedBeers
+
     def addPreference(self, preference: dict):
         '''Add single preference to user preferences, assumes none of the values are None'''
         self.amount += 1

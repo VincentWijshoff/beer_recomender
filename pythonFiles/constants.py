@@ -1,5 +1,12 @@
 ### File with constants
 
+# App behaviour
+    # Recommendation
+THRESH = 0.5
+    # Amount of beers in list
+BEERLIST_AMOUNT = 5
+
+
 # Orginal dataset
 ORIG_DATASET_PATH = './pythonFiles/beer-dataset/beer-database'
 PRE_FILTER_JSONS = 603
@@ -20,5 +27,3 @@ MAX_IBU = 120
 MAX_SRM = 41
 MIN_SRM = 1
 
-# Recommendation
-THRESH = 0.5
