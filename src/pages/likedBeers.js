@@ -2,7 +2,7 @@ import makeRequest from '../util/requestHandler';
 import getUID from '../util/uidFetcher';
 import { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTrash, faTrashAlt, faTrashArrowUp, faTrashCan } from '@fortawesome/free-solid-svg-icons'
+import { faTrashCan } from '@fortawesome/free-solid-svg-icons'
 
 const LikedBeers = () => {
     const [beerlist, setdata] = useState([]);
