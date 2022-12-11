@@ -67,10 +67,11 @@ def dislike_beer_from_id(beerid, uid):
 # login
 @api.route('/login/<string:uName>/<string:pWord>', methods=['GET'])
 def login(uName, pWord):
-  for v in users.values():
+  for k in users.keys():
+    v = users[k]
     if v[0] == uName:
       if v[1] == pWord:
-        return json.dumps({"response": True, "uid": v[2]})
+        return json.dumps({"response": True, "uid": k})
       else:
         return json.dumps({"response": False, "uid": 1}) # TODO: Show that pWord is wrong
   return json.dumps({"response": False, "uid": 1}) # TODO: Show user does not exist
