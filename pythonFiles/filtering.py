@@ -14,7 +14,6 @@ def persist(b: json):
         os.makedirs(NEW_DATASET_PATH)
     current_page = b['currentPage']
     output_filename = os.path.join(NEW_DATASET_PATH, f'beer_{current_page}.json')
-    print('-', output_filename)
     with open(output_filename, 'w', encoding='utf-8') as w:
         json.dump(obj=b, fp=w, indent=2, ensure_ascii=False)
     current_page += 1

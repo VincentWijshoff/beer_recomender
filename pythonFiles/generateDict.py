@@ -14,7 +14,6 @@ if not os.path.isfile(IDDICT):
         ratings_data = pd.read_json('./' + NEW_DATASET_PATH + '/beer_{}.json'.format(i)).data
         for d in ratings_data:
             dict[d.get("id")] = i
-    print(dict)
     with open(IDDICT, 'wb') as f:
         pickle.dump(dict, f)
 else: 
