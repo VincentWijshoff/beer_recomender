@@ -43,6 +43,7 @@ def get_liked_beers_from_id(uid):
   u:user = getUserById(uid)
   res = []
   for b in u.getLikedBeers():
+    b = getBeerByID(b)
     res += [{"picture": b["labels"]["large"], "name": b["nameDisplay"], "id":b["id"]}]
   return json.dumps(res)
 
