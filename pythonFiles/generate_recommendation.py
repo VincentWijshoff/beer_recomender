@@ -15,7 +15,7 @@ def generate_recommendation(user:user, thresh=THRESH):
         random.shuffle(ratings_data)
 
         for d in ratings_data:
-            if ratings_data["id"] in user.getLikedBeers():
+            if d["id"] in user.getLikedBeers():
                 continue
             rating = getSimilarity(user,d)
             if rating >= thresh:
