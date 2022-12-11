@@ -13,10 +13,9 @@ def generate_recommendation(user:user, thresh=THRESH):
     while True:
         i = random.randint(1,FILTERED_JSONS)
         ratings_data = pd.read_json('./' + NEW_DATASET_PATH + '/beer_{}.json'.format(i)).data
-        # random.shuffle(ratings_data)
+        random.shuffle(ratings_data)
 
         for d in ratings_data:
             rating = getSimilarity(user,d)
             if rating >= thresh:
-                print(rating)
                 return d
