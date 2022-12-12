@@ -26,6 +26,24 @@ def getUserById(uid):
   _,_,u = users[uid]
   return u
 
+#  get the beer list for given question
+@api.route('/beerlistforquestion/<int:qid>', methods=['GET'])
+def get_beer_list_from_qid(qid):
+  res = []
+  beerIdsPerQuestion = [
+    ["tciJOF", "9O3QPg", "QLp4mV", "9eyUBt"],
+    ["UnyhJx", "56lK12", "SThEdE", "vtbz7O"],
+    ["PsFAwd", "rfgNzi","GbFY1J","1fDG93"],
+    ["wsTxxX", "32d1kv","oSJfBy","dGq2Rx"],
+    ["OkLgE4", "Pn9Coe", "z4k3eU","AtIsrV"]
+  ]
+
+  for i in beerIdsPerQuestion[qid]:
+    rec = getBeerByID(i)
+    res.append({"picture": rec["labels"]["medium"], "name": rec["nameDisplay"], "description":"description placeholder", "id": rec["id"]})
+  return json.dumps(res)
+
+
 #  get the beer list for given user
 @api.route('/beerlistforuser/<string:uid>', methods=['GET'])
 def get_beer_list_from_id(uid):

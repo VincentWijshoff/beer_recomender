@@ -138,20 +138,37 @@ a:active { text-decoration: none; }
 }
 
 .nextQuestionButton{
-	background-color: #5511107a;
+	background: transparent;
 	color: pink;
 	text-align: center;
-	grid-column-start: 2;
-	grid-column-end: 3;
+	height: 40pt;
+	width: 30%;
+	border-style:none;
+	font-size: large;
+	background-color: #5311109f;
+	border: 2px solid #290100;
+	border-radius: 15px;
+}
+
+.nextQuestionButton:hover{
+	cursor: pointer;
 }
 
 .divNextQuestion{
-	
-	margin-top: 30pt;
-	background-color: #5511107a;
+	margin-top: 40pt;
 	color: pink;
 	height: 40pt;
-	
+	text-align: center;
+	min-width: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	position:fixed;
+	background-color: #5511107a;
+	border: 1.5px solid #290100;
+	font-size: calc(10px + 2vmin);
+	padding-top: 2px;
+	padding-bottom: 2px;
 }
 
 .answerlistitem{
