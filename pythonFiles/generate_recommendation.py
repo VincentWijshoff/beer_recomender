@@ -1,5 +1,4 @@
 import random
-
 import pandas as pd
 from userBeerSimilarity import getSimilarity
 from user import user
@@ -16,6 +15,8 @@ def generate_recommendation(user:user, thresh=THRESH):
         random.shuffle(ratings_data)
 
         for d in ratings_data:
+            if d["id"] in user.getLikedBeers():
+                continue
             rating = getSimilarity(user,d)
             if rating >= thresh:
                 return d

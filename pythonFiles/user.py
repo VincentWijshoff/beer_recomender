@@ -19,6 +19,9 @@ class user:
         self.likedBeers = []                # Beers the user has indicated they like
         self.dislikedBeers = []             # Beers the user has indicated they don't like 
     
+    def emptyPreferece(self):
+        return len(self.preferences.keys()) == 0
+
     def getLikedBeers(self):
         ''' Get this users liked beers'''
         return self.likedBeers
