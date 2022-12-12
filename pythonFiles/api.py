@@ -12,7 +12,7 @@ api = Flask(__name__)
 @api.route('/beerfromid/<string:beerid>', methods=['GET'])
 def get_beer_from_id(beerid):
   beer = getBeerByID(beerid)
-  return json.dumps({"name": beer["nameDisplay"], "image": beer["labels"]["medium"], "explenation":"This is the explenation", "id":1})
+  return json.dumps({"name": beer["nameDisplay"], "image": beer["labels"]["medium"], "explenation":"This is the explenation", "id":beerid})
 
 
 #  get the next recommended beer for this person
@@ -73,8 +73,8 @@ def login(uName, pWord):
       if v[1] == pWord:
         return json.dumps({"response": True, "uid": k})
       else:
-        return json.dumps({"response": False, "uid": 1}) # TODO: Show that pWord is wrong
-  return json.dumps({"response": False, "uid": 1}) # TODO: Show user does not exist
+        return json.dumps({"response": False})
+  return json.dumps({"response": False})
 
 
 # register

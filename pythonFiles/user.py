@@ -13,11 +13,11 @@ class user:
     #   - ibu: bitterheid, schaal van 0 tot 120
     #   - srmId: kleur, schaal van 1 -> 41
     def __init__(self, id, preferences: dict = {}):
-        self.id = id                        # User ID
-        self.preferences = preferences      # User preferences
-        self.amount = 0                     # Amount of preferences stored
-        self.likedBeers = []                # Beers the user has indicated they like
-        self.dislikedBeers = []             # Beers the user has indicated they don't like 
+        self.id = id                            # User ID
+        self.preferences = preferences.copy()   # User preferences
+        self.amount = 0                         # Amount of preferences stored
+        self.likedBeers = []                    # Beers the user has indicated they like
+        self.dislikedBeers = []                 # Beers the user has indicated they don't like 
     
     def emptyPreferece(self):
         return len(self.preferences.keys()) == 0
