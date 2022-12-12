@@ -18,7 +18,7 @@ const BeerList = () => {
                 return (
                     <a href={"/onebeer?uid=" + uid + "&beerid=" + item.id}>
                         <div className="beerlistitem topx">
-                            <div className="beerlistpicture">{item.picture}</div>
+                            <div className="beerlistpicture"><img src={item.picture} alt="" className="listpicture"/></div>
                             <div className="beerlistname">{item.name}</div>
                             <div className="beerlistdescription">{item.description}</div>    
                         </div>

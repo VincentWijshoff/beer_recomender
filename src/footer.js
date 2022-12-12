@@ -3,7 +3,6 @@ import getUID from "./util/uidFetcher";
 // actually header
 const Footer = () => {
     const uid = getUID();
-    console.log(uid);
     return(
         <div className="footer">
             <a href={"/oneBeer?uid=" + uid} className="footerItem">One beer</a>

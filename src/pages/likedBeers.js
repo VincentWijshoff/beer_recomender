@@ -19,7 +19,7 @@ const LikedBeers = () => {
             {beerlist.map((item, i) => {
                 return (
                     <div className="beerlistitem topx" key={i}>
-                        <div className="beerlistpicture">{item.picture}</div>
+                        <div className="beerlistpicture"><img src={item.picture} alt="" className="listpicture"/></div>
                         <div className="beerlistname">{item.name}</div>
                         <div className="likedislikelist">
                             <button class="deletebutton" onClick={() => {removeBeer(item.id, uid)}}><FontAwesomeIcon icon={faTrashCan}/></button>

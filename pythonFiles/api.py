@@ -12,7 +12,7 @@ api = Flask(__name__)
 @api.route('/beerfromid/<string:beerid>', methods=['GET'])
 def get_beer_from_id(beerid):
   beer = getBeerByID(beerid)
-  return json.dumps({"name": beer["nameDisplay"], "image": beer["labels"]["large"], "explenation":"This is the explenation", "id":1})
+  return json.dumps({"name": beer["nameDisplay"], "image": beer["labels"]["medium"], "explenation":"This is the explenation", "id":1})
 
 
 #  get the next recommended beer for this person
@@ -20,7 +20,7 @@ def get_beer_from_id(beerid):
 def get_next_beer_from_id(uid):
   u = getUserById(uid)
   beer = generate_recommendation(u)
-  return json.dumps({"name": beer["nameDisplay"], "image": beer["labels"]["large"], "explenation":"This is the explenation", "id":beer["id"]})
+  return json.dumps({"name": beer["nameDisplay"], "image": beer["labels"]["medium"], "explenation":"This is the explenation", "id":beer["id"]})
 
 def getUserById(uid):
   _,_,u = users[uid]
@@ -33,7 +33,7 @@ def get_beer_list_from_id(uid):
   res = []
   for _ in range(BEERLIST_AMOUNT):
     rec = generate_recommendation(u)
-    res.append({"picture": rec["labels"]["large"], "name": rec["nameDisplay"], "description":"description placeholder", "id": rec["id"]})
+    res.append({"picture": rec["labels"]["medium"], "name": rec["nameDisplay"], "description":"description placeholder", "id": rec["id"]})
   return json.dumps(res)
 
 
@@ -44,7 +44,7 @@ def get_liked_beers_from_id(uid):
   res = []
   for b in u.getLikedBeers():
     b = getBeerByID(b)
-    res += [{"picture": b["labels"]["large"], "name": b["nameDisplay"], "id":b["id"]}]
+    res += [{"picture": b["labels"]["medium"], "name": b["nameDisplay"], "id":b["id"]}]
   return json.dumps(res)
 
 

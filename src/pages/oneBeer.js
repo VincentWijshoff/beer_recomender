@@ -23,7 +23,9 @@ const OneBeer = () => {
     return (
         <div className="beerbody onebeerbody">
             {/* we need a picture of a beer */}
-            <div className="beerpicture">{data.image}</div>
+            <div className="beerpicture">
+                <img src={data.image} alt="" />
+            </div>
             {/* then an explenation */}
             <div className="beerdescription">
                 <div className="beername">{data.name}</div>

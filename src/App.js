@@ -13,6 +13,7 @@ import InitialSurvey from './pages/initialSurvey';
 
 
 function App() {
+  document.title = "Beer!";
   return (
     <div className="App">
       <Routes> 
