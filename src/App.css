@@ -133,10 +133,6 @@ a:active { text-decoration: none; }
 	grid-row-end: 4;
 }
 
-.answerInitialSurvey:hover{
-	cursor:pointer;
-}
-
 .nextQuestionButton{
 	background: transparent;
 	color: pink;
@@ -171,7 +167,7 @@ a:active { text-decoration: none; }
 	padding-bottom: 2px;
 }
 
-.answerlistitem{
+.answerlistitemDiv{
 	min-height: 100px;
 	/* width: 100%; */
 	margin: 0 auto;
@@ -180,9 +176,23 @@ a:active { text-decoration: none; }
 	padding: 10px;
 	border: 3px solid #fcae49;
 	border-radius: 15px;
-	color: pink;
 	text-align: center;
+	display: grid;
+	background: transparent;
+	color: pink;
+	font-size:x-large;
 }
+
+.answerlistitemDiv:hover{
+	cursor:pointer;
+}
+
+
+.answerlistitemDiv:active{
+	opacity: 0.6;
+}
+
+
 
 .div1 {
 	background-color: red;

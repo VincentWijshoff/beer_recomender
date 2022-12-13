@@ -25,6 +25,7 @@ const InitialSurvey = () => {
     }, []);
 
     let question = "Which of the follor beers do you like?"
+    let likedBeers = [];
 
     return (
         <div>
@@ -40,7 +41,9 @@ const InitialSurvey = () => {
                 {
                     beerlist.map((answer) => {
                         return (
-                        <div className="answerlistitem" id={'answer'+answer.name} onClick={() => {console.log(answer.name)}}>{answer.name}</div>
+                            
+                        <button className="answerlistitemDiv" id={'answer'+answer.id} onClick={() => {likedBeers = answerClicked(answer.id, likedBeers)}}>{answer.name}</button>
+                            
                     )})
                 }
                 </div>
@@ -49,7 +52,7 @@ const InitialSurvey = () => {
             </div>
             
             <div className='divNextQuestion'>
-                <button className="nextQuestionButton" onClick={() => {qid = qid + 1; nextQuestion(uid, qid)}}>Next</button>
+                <button className="nextQuestionButton" onClick={() => {qid = qid + 1; nextQuestion(uid, qid, likedBeers)}}>Next</button>
             </div>
 
             
@@ -58,7 +61,11 @@ const InitialSurvey = () => {
       );
 }
 
-const nextQuestion = (uid, qid) => {
+const nextQuestion = (uid, qid, likedBeers) => {
+    for(const beerID of likedBeers)
+        makeRequest("/likebeer/" + beerID + "/" + uid);
+    
+    
     if(qid < 5)
         window.location.href = "/InitialSurvey?uid=" + uid + "&qid=" + qid.toString();
     else
@@ -71,6 +78,20 @@ const getBeerData = async (id) => {
     return makeRequest("/beerlistforquestion/" + id);
 }
 
+const answerClicked = (beerid, likedBeers) => {
+    let i = likedBeers.indexOf(beerid);
+    if(i == -1){
+        console.log("not in list");
+        likedBeers.push(beerid);
+        document.getElementById("answer" + beerid).style.opacity = 0.6;
+    }else{
+        console.log("in list");
+        likedBeers.splice(i, 1);
+        document.getElementById("answer" + beerid).style.opacity = 1;
+    }
 
+    return likedBeers;
+
+}
 
 export default InitialSurvey;
