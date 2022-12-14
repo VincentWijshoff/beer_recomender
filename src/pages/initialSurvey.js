@@ -14,13 +14,11 @@ const InitialSurvey = () => {
         id: 0,
     }]);
     const uid = getUID();
-    console.log(uid);
     let qid = parseInt(getQID());
-    console.log(qid);
     useEffect(() => {
+        let qid = parseInt(getQID());
         getBeerData(qid).then((res) => {
             setdata(res);
-            console.log("res[0]: " + res[0]);
         })
     }, []);
 
@@ -100,18 +98,15 @@ const nextQuestion = (uid, qid, likedBeers) => {
 }
 
 const getBeerData = async (id) => {
-    console.log(id);
     return makeRequest("/beerlistforquestion/" + id);
 }
 
 const answerClicked = (beerid, likedBeers) => {
     let i = likedBeers.indexOf(beerid);
-    if(i == -1){
-        console.log("not in list");
+    if(i === -1){
         likedBeers.push(beerid);
         document.getElementById("answer" + beerid).style.opacity = 0.6;
     }else{
-        console.log("in list");
         likedBeers.splice(i, 1);
         document.getElementById("answer" + beerid).style.opacity = 1;
     }
