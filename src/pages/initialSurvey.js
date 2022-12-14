@@ -9,8 +9,8 @@ import { useEffect, useState } from 'react';
 const InitialSurvey = () => {
     const [beerlist, setdata] = useState([{
         name: "Loading...",
-        image: "",
-        explenation: "",
+        picture: "",
+        labels: {abv: 0, ibu:0, organic:0, servingTemperature:0, color: "white"},
         id: 0,
     }]);
     const uid = getUID();
@@ -42,7 +42,33 @@ const InitialSurvey = () => {
                     beerlist.map((answer) => {
                         return (
                             
-                        <button className="answerlistitemDiv" id={'answer'+answer.id} onClick={() => {likedBeers = answerClicked(answer.id, likedBeers)}}>{answer.name}</button>
+                        <button className="answerlistitemDiv" id={'answer'+answer.id} onClick={() => {console.log(answer); likedBeers = answerClicked(answer.id, likedBeers)}}>
+                            
+                            <div className="beernameAnswer">
+                                {answer.name}
+                            </div>
+                            <div className="imageandlabelsAnswer">
+                                <div className="divimg"><img src={answer.picture} alt="" /></div>
+                                <div className="labels1Answer">
+                                    <div className="label1Answer">{"abv: " + answer.labels.abv + "%"}</div>
+                                    <div className="label2Answer">{"ibu: " + answer.labels.ibu}</div>
+                                    <div className="label3Answer">{"is organic: " + answer.labels.organic}</div>
+                                </div>
+                                <div className="labels2Answer">
+                                    <div className="label1Answer">{"serving at: " + answer.labels.servingTemperature}</div>
+                                    <div className="label2Answer">{"beer color: "}
+                                        <span className="dot" style={{backgroundColor: '#'+ answer.labels.color}}></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* <div className="iconAndNameIS">
+                                
+                                
+                            </div> */}
+        
+                                
+                        </button>
                             
                     )})
                 }

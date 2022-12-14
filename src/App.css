@@ -171,7 +171,7 @@ a:active { text-decoration: none; }
 	min-height: 100px;
 	/* width: 100%; */
 	margin: 0 auto;
-	width:300px;
+	width:400px;
 	margin-top: 10px;
 	padding: 10px;
 	border: 3px solid #fcae49;
@@ -190,6 +190,66 @@ a:active { text-decoration: none; }
 
 .answerlistitemDiv:active{
 	opacity: 0.6;
+}
+
+.iconAndNameIS{
+	text-align: left;
+	display: grid;
+	grid-column: auto auto auto;
+}
+
+.divimg{
+	align-self: left;
+	grid-column-start: 1;
+	width: fit-content;
+}
+
+.imageandlabelsAnswer{
+	text-align: left;
+	display: grid;
+	grid-column: auto auto auto;
+	font-size:large;
+	color: white;
+}
+
+.labels1Answer{
+	text-align: left;
+	grid-column-start: 2;
+	display: grid;
+	grid-row: auto auto auto;
+}
+
+.label1Answer{
+	grid-row-start: 1;
+}
+.label2Answer{
+	grid-row-start: 2;
+}
+.label3Answer{
+	grid-row-start: 3;
+}
+
+.dot {
+	height: 10px;
+	width: 10px;
+	/* background-color: #bbb; */
+	border-radius: 50%;
+	display: inline-block;
+  }
+
+.labels2Answer{
+	text-align: left;
+	grid-column-start: 3;
+	display: grid;
+	grid-row: auto auto;
+}
+
+
+.beernameAnswer{
+	align-self: center;
+	height: fit-content;
+	display: block;
+	padding-bottom: 5pt;
 }
 
 

@@ -40,7 +40,8 @@ def get_beer_list_from_qid(qid):
 
   for i in beerIdsPerQuestion[qid]:
     rec = getBeerByID(i)
-    res.append({"picture": rec["labels"]["medium"], "name": rec["nameDisplay"], "description":"description placeholder", "id": rec["id"]})
+    labels = {"abv": rec["abv"], "servingTemperature": rec["servingTemperature"], "ibu": rec["ibu"], "color": rec["srm"]["hex"], "organic": rec["isOrganic"]}
+    res.append({"picture": rec["labels"]["icon"], "name": rec["nameDisplay"], "description":"description placeholder", "id": rec["id"], "labels": labels})
   return json.dumps(res)
 
 
