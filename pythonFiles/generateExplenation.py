@@ -32,29 +32,29 @@ def generateExplenation2(u: user, beer):
     abv = beer["abv"]
     abvDist = abs(abvFactor - float(abv))/MAX_ABV # Distance in [0,1]
     if abvDist < 0.3: 
-         res += "\nIt has " + abv + "% alcohol, which in similar to the beers you have previously liked"
+         res += "\nIt has " + abv + "% alcohol, which in similar to the beers you have previously liked. "
 
     ibuFactor = u.getIbuPref()
     ibu = float(beer["ibu"])
     ibuDist = abs(ibuFactor - ibu)/MAX_IBU
     if ibuDist < 0.3: 
-        res += "\nIt has a bitternes (IBU) of " + str(ibu) + ". "
+        res += "\nIt has a bitternes (IBU) of " + str(ibu) + ", "
         if ibu < 20:
-            res += "This means it is only weakly bitter. "
+            res += "this means it is only weakly bitter. "
         elif ibu < 30:
-            res += "This means it is only slightly bitter. "
+            res += "this means it is only slightly bitter. "
         elif ibu < 45:
-            res += "This means it is averagely bitter. "
+            res += "this means it is averagely bitter. "
         elif ibu < 60:
-            res += "This means it is only strongly bitter. "
+            res += "this means it is only strongly bitter. "
         else:
-            res += "This means it is very bitter. "
+            res += "this means it is very bitter. "
 
     srmFactor = u.getSrmPref()
     srm = float(beer["srmId"])
     srmDist = abs(srmFactor - srm)/(MAX_SRM - MIN_SRM)
     if srmDist < 0.3: 
-        res += "\nIt has a value of " + str(srm) + " on the srm color scale. This means has a "
+        res += "\nIt has a value of " + str(srm) + " on the srm color scale, this means it has a "
         for k in SRM_DICT.keys():
             if srm<k:
                 res += SRM_DICT[k] + " color."

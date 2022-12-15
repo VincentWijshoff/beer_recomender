@@ -1,12 +1,13 @@
+import random
 import uuid
 from flask import Flask, json
 from generate_recommendation import generate_recommendation
 from getBeerByID import getBeerByID
 from constants import *
 from user import user
+from generateExplenation import *
 
 api = Flask(__name__)
-
 
 #  get the beer from the given ID
 @api.route('/beerfromid/<string:beerid>', methods=['GET'])
@@ -18,9 +19,10 @@ def get_beer_from_id(beerid):
 #  get the next recommended beer for this person
 @api.route('/nextbeerforuser/<string:uid>', methods=['GET'])
 def get_next_beer_from_id(uid):
-  u = getUserById(uid)
+  u:user = getUserById(uid)
   beer = generate_recommendation(u)
-  return json.dumps({"name": beer["nameDisplay"], "image": beer["labels"]["medium"], "explenation":"This is the explenation", "id":beer["id"]})
+  expl = generateExplenation1(u,beer) if (u.getExplenationKey() == 0) else generateExplenation2(u,beer)
+  return json.dumps({"name": beer["nameDisplay"], "image": beer["labels"]["medium"], "explenation":expl, "id":beer["id"]})
 
 def getUserById(uid):
   _,_,u = users[uid]
@@ -102,7 +104,9 @@ def register(uName, pWord):
   uid = str(uuid.uuid4())
   while uid in users.keys():
     uid = str(uuid.uuid4())
-  users[uid] = [uName, pWord, user(uid)]
+  newUser = user(uid)
+  newUser.setExplenationKey(random.randint(0,1))
+  users[uid] = [uName, pWord, newUser]
   return json.dumps({"uid": uid})
 
 

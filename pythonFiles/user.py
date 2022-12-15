@@ -18,7 +18,14 @@ class user:
         self.amount = 0                         # Amount of preferences stored
         self.likedBeers = []                    # Beers the user has indicated they like
         self.dislikedBeers = []                 # Beers the user has indicated they don't like 
+        self.explenationKey = 1
     
+    def setExplenationKey(self, newKey):
+        self.explenationKey = newKey
+
+    def getExplenationKey(self):
+        return self.explenationKey
+
     def emptyPreferece(self):
         return len(self.preferences.keys()) == 0
 
