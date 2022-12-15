@@ -10,8 +10,8 @@ from generateExplenation import *
 api = Flask(__name__)
 
 #  get the beer from the given ID
-@api.route('/beerfromid/<string:beerid>', methods=['GET'])
-def get_beer_from_id(beerid):
+@api.route('/beerfromid/<string:beerid>/<string:uid>', methods=['GET'])
+def get_beer_from_id(beerid, uid):
   beer = getBeerByID(beerid)
   return json.dumps({"name": beer["nameDisplay"], "image": beer["labels"]["medium"], "explenation":"This is the explenation", "id":beerid})
 

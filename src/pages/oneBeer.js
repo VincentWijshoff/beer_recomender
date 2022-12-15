@@ -43,7 +43,7 @@ const OneBeer = () => {
 const getBeerData = async (uid, beerid) => {
     if(beerid){
         // get the beer from the given ID
-        return makeRequest("/beerfromid/" + beerid);
+        return makeRequest("/beerfromid/" + beerid + "/" + uid);
     }
     // get the next recommended beer for this person
     return makeRequest("/nextbeerforuser/" + uid);

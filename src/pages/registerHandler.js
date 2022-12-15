@@ -16,7 +16,7 @@ const tryRegister = async () => {
     const uName = urlParams.get('txt');
     const pWord = urlParams.get('pswd');
     let response = await makeRequest("/register/"+uName+"/"+pWord); // {uid: string}
-    window.location.href = "/initialSurvey?uid=" + response.uid;
+    window.location.href = "/initialSurvey?uid=" + response.uid + "&qid=0";
 }
 
 export default RegisterHandler;
