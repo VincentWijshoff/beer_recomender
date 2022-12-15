@@ -16,7 +16,7 @@ def generateExplenation1(u: user, beer):
             best = b
             max = s
     print(max)
-    res = "We think you will like this beer because of it's similarities with " + b.get("name") + " which you have previously liked."
+    res = "We think you will like this beer because of it's similarities with " + best.get("name") + " which you have previously liked."
     return res
 
 def generateExplenation2(u: user, beer):
