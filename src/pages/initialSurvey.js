@@ -24,7 +24,7 @@ const InitialSurvey = () => {
         })
     }, []);
 
-    let question = "Which of the follor beers do you like?"
+    let question = "Select all beers which you like:"
     let likedBeers = [];
 
     return (
@@ -109,11 +109,11 @@ const answerClicked = (beerid, likedBeers) => {
     if(i == -1){
         console.log("not in list");
         likedBeers.push(beerid);
-        document.getElementById("answer" + beerid).style.opacity = 0.6;
+        document.getElementById("answer" + beerid).style.opacity = 1;
     }else{
         console.log("in list");
         likedBeers.splice(i, 1);
-        document.getElementById("answer" + beerid).style.opacity = 1;
+        document.getElementById("answer" + beerid).style.opacity = 0.7;
     }
 
     return likedBeers;

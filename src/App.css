@@ -178,9 +178,11 @@ a:active { text-decoration: none; }
 	border-radius: 15px;
 	text-align: center;
 	display: grid;
-	background: transparent;
+	background: rgba(0, 0, 0, 0.5);
+	/* background:transparent; */
 	color: pink;
 	font-size:x-large;
+	opacity: 0.7;
 }
 
 .answerlistitemDiv:hover{
