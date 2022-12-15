@@ -14,7 +14,14 @@ api = Flask(__name__)
 def get_beer_from_id(beerid, uid):
   u:user = getUserById(uid)
   beer = getBeerByID(beerid)
-  expl = generateExplenation1(u,beer) if (u.getExplenationKey() == 0) else generateExplenation2(u,beer)
+  expl = " "
+  key = u.getExplenationKey()
+  if key == 0:
+    expl = generateExplenation1(u,beer)
+  elif key == 1:
+    expl = generateExplenation2(u,beer)
+  elif key == 2:
+    expl = generateExplenation3(u,beer)
   return json.dumps({"name": beer["nameDisplay"], "image": beer["labels"]["medium"], "explenation":expl, "id":beerid})
 
 
@@ -23,7 +30,14 @@ def get_beer_from_id(beerid, uid):
 def get_next_beer_from_id(uid):
   u:user = getUserById(uid)
   beer = generate_recommendation(u)
-  expl = generateExplenation1(u,beer) if (u.getExplenationKey() == 0) else generateExplenation2(u,beer)
+  expl = " "
+  key = u.getExplenationKey()
+  if key == 0:
+    expl = generateExplenation1(u,beer)
+  elif key == 1:
+    expl = generateExplenation2(u,beer)
+  elif key == 2:
+    expl = generateExplenation3(u,beer)
   return json.dumps({"name": beer["nameDisplay"], "image": beer["labels"]["medium"], "explenation":expl, "id":beer["id"]})
 
 def getUserById(uid):
@@ -56,7 +70,22 @@ def get_beer_list_from_id(uid):
   res = []
   for _ in range(BEERLIST_AMOUNT):
     rec = generate_recommendation(u)
-    expl = generateExplenation1(u,rec) if (u.getExplenationKey() == 0) else generateExplenation2(u,rec)
+    checked = False
+    while not checked:
+      checked = True
+      for r in res:
+        if rec["id"]==r["id"]:
+          rec = generate_recommendation(u)
+          checked = False
+
+    expl = " "
+    key = u.getExplenationKey()
+    if key == 0:
+      expl = generateExplenation1(u,rec)
+    elif key == 1:
+      expl = generateExplenation2(u,rec)
+    elif key == 2:
+      expl = generateExplenation3(u,rec)
     res.append({"picture": rec["labels"]["medium"], "name": rec["nameDisplay"], "description":expl, "id": rec["id"]})
   return json.dumps(res)
 
@@ -108,7 +137,7 @@ def register(uName, pWord):
   while uid in users.keys():
     uid = str(uuid.uuid4())
   newUser = user(uid)
-  newUser.setExplenationKey(random.randint(0,1))
+  newUser.setExplenationKey(random.randint(0,2))
   users[uid] = [uName, pWord, newUser]
   return json.dumps({"uid": uid})
 
