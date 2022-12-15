@@ -272,12 +272,12 @@ a:active { text-decoration: none; }
 .onebeerbody{
 	display: grid;
 	row-gap: 15px;
-	grid-template-columns: auto auto auto;
+	grid-template-columns: 25% auto 25%;
 	grid-template-rows: 15% 50% 30% 20%;
 }
 .beerlistbody{
 	display:grid;
-	grid-template-columns: auto auto auto;
+	grid-template-columns: 15% auto 15%;
 	grid-template-rows: 90px auto;
 }
 
@@ -299,6 +299,9 @@ a:active { text-decoration: none; }
 .beerlistpicture{
 	grid-column-start: 1;
 	grid-column-end: 2;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 .listpicture{
@@ -341,6 +344,9 @@ a:active { text-decoration: none; }
 	border: 3px solid #fcae49;
 	border-radius: 15px;
 	color: pink;
+	width: 100%;
+	display:grid;
+	grid-template-columns: 30% 20% auto;
 }
 
 .beerpicture{
