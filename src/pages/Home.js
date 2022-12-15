@@ -8,6 +8,10 @@ const Home = () => {
                 <label htmlFor="chk" aria-hidden="true">Sign up</label>
                 <input type="text" name="txt" placeholder="User name" required="1" id="signupUname"/>
                 <input type="password" name="pswd" placeholder="Password" required="1" id="signupPword"/>
+                <div className="agreement">
+                  <input type="checkbox" name="agreement" required="1" id="agreement"/>
+                  <div className="agreementtext">I agree to the pre-defined terms and conditions</div>
+                </div>
                 <button className="button">Sign up</button>
               </form>
             </div>

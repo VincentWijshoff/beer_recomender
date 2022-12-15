@@ -485,6 +485,17 @@ input{
 	transform: scale(.6);
 }
 
+.agreement{
+	display: flex;
+	margin-bottom: -2px;
+}
+
+.agreementtext{
+	font-size: 18px;
+	margin-top: 3px;
+	padding-right: 10px;
+}
+
 /* star rating scheme */
 
 .rate {
