@@ -12,8 +12,10 @@ api = Flask(__name__)
 #  get the beer from the given ID
 @api.route('/beerfromid/<string:beerid>/<string:uid>', methods=['GET'])
 def get_beer_from_id(beerid, uid):
+  u:user = getUserById(uid)
   beer = getBeerByID(beerid)
-  return json.dumps({"name": beer["nameDisplay"], "image": beer["labels"]["medium"], "explenation":"This is the explenation", "id":beerid})
+  expl = generateExplenation1(u,beer) if (u.getExplenationKey() == 0) else generateExplenation2(u,beer)
+  return json.dumps({"name": beer["nameDisplay"], "image": beer["labels"]["medium"], "explenation":expl, "id":beerid})
 
 
 #  get the next recommended beer for this person
@@ -42,8 +44,8 @@ def get_beer_list_from_qid(qid):
 
   for i in beerIdsPerQuestion[qid]:
     rec = getBeerByID(i)
-    labels = {"abv": rec["abv"], "servingTemperature": rec["servingTemperature"], "ibu": rec["ibu"], "color": rec["srm"]["hex"], "organic": rec["isOrganic"]}
-    res.append({"picture": rec["labels"]["icon"], "name": rec["nameDisplay"], "description":"description placeholder", "id": rec["id"], "labels": labels})
+    labels = {"abv": rec["abv"], "servingTemperature": rec["servingTemperature"], "ibu": rec["ibu"], "color": rec["srm"]["hex"], "organic": "Yes" if rec["isOrganic"] == "Y" else "No"}
+    res.append({"picture": rec["labels"]["icon"], "name": rec["nameDisplay"], "id": rec["id"], "labels": labels})
   return json.dumps(res)
 
 
@@ -54,7 +56,8 @@ def get_beer_list_from_id(uid):
   res = []
   for _ in range(BEERLIST_AMOUNT):
     rec = generate_recommendation(u)
-    res.append({"picture": rec["labels"]["medium"], "name": rec["nameDisplay"], "description":"description placeholder", "id": rec["id"]})
+    expl = generateExplenation1(u,rec) if (u.getExplenationKey() == 0) else generateExplenation2(u,rec)
+    res.append({"picture": rec["labels"]["medium"], "name": rec["nameDisplay"], "description":expl, "id": rec["id"]})
   return json.dumps(res)
 
 
