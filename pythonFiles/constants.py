@@ -26,4 +26,5 @@ MAX_ABV = 19.4
 MAX_IBU = 120
 MAX_SRM = 41
 MIN_SRM = 1
+SRM_DICT= {3: "pale", 4:"straw", 5:"pale gold", 6: "gold", 7:"deep gold", 10: "pale amber", 13:"medium amber", 16:"deep amber", 19: "amber brown", 21:"brown", 25:"ruby-brown", 31:"deep brown", 41:"black"}
 
