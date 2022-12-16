@@ -9,8 +9,8 @@ services:
       dockerfile: Dockerfile
     ports:
       - 3440:3000
-    env_file:
-      - .env
+    environment:
+      - REACT_APP_API_BASE_URL=$BEER_HOST:8080
       
   backend:
     container_name: beer_backend
