@@ -38,7 +38,7 @@ def get_next_beer_from_id(uid):
     expl = generateExplenation2(u,beer)
   elif key == 2:
     expl = generateExplenation3(u,beer)
-  return json.dumps({"name": beer["nameDisplay"], "image": beer["labels"]["medium"], "explenation":expl, "id":beer["id"]})
+  return json.dumps({"name": beer["nameDisplay"], "image": beer["labels"]["medium"], "explenation":expl, "id":beer["id"], "beerInfo": "beerinfo"})
 
 def getUserById(uid):
   _,_,u = users[uid]

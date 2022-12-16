@@ -35,8 +35,7 @@ const OneBeer = () => {
                         <label className="modal-close" for="modal-toggle">x</label>
                         <h2 className="modalTItle">{data.name}</h2>
                         <hr />
-                        {/* {data.information} */}
-                        <p className="modalTItle">DIt is placejolder tekst voor de explenation van da bier ding hier, moet nog gefixt wroden in da api</p>
+                        <p className="modalTItle">{data.beerInfo}</p>
                         <label className="modal-close button" for="modal-toggle">Close</label>
                         </div>
                     </div>
