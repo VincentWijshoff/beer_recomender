@@ -1,15 +1,12 @@
 version: '3.7'
-
 services:
-
   frontend:
     container_name: beer_frontend
     build:
       context: .
       dockerfile: Dockerfile
     ports:
-      - 6969:3000
-  
+      - 3440:3000
   backend:
     container_name: beer_backend
     build:
