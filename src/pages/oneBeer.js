@@ -24,7 +24,23 @@ const OneBeer = () => {
         <div className="beerbody onebeerbody">
             {/* we need a picture of a beer */}
             <div className="beerpicture">
-                <img src={data.image} alt="" />
+                <div className="beerimagecenter">
+                    <img src={data.image} alt="" />
+                </div>
+                <div className="modal-container">
+                    <input id="modal-toggle" type="checkbox"/>
+                    <button>More info</button>
+                    <div className="modal-backdrop">
+                        <div className="modal-content">
+                        <label className="modal-close" for="modal-toggle">x</label>
+                        <h2 className="modalTItle">{data.name}</h2>
+                        <hr />
+                        {/* {data.information} */}
+                        <p className="modalTItle">DIt is placejolder tekst voor de explenation van da bier ding hier, moet nog gefixt wroden in da api</p>
+                        <label className="modal-close button" for="modal-toggle">Close</label>
+                        </div>
+                    </div>
+                </div>
             </div>
             {/* then an explenation */}
             <div className="beerdescription">
