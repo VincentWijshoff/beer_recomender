@@ -1,5 +1,7 @@
 version: '3.3'
+
 services:
+
   frontend:
     container_name: beer_frontend
     build:
@@ -7,6 +9,7 @@ services:
       dockerfile: Dockerfile
     ports:
       - 3440:3000
+      
   backend:
     container_name: beer_backend
     build:
