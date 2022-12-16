@@ -14,11 +14,11 @@ const LikedBeers = () => {
     }, []);
     const uid = getUID();
     return (
-        <div className="beerbody beerlistbody">
-            <div className="beerlist">
+        <div className="beerbody likedlistbody">
+            <div className="likedlist">
             {beerlist.map((item, i) => {
                 return (
-                    <div className="beerlistitem topx" key={i}>
+                    <div className="likedlistitem topx" key={i}>
                         <div className="beerlistpicture"><img src={item.picture} alt="" className="listpicture"/></div>
                         <div className="beerlistname">{item.name}</div>
                         <div className="likedislikelist">

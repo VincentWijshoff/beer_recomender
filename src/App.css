@@ -280,6 +280,11 @@ a:active { text-decoration: none; }
 	grid-template-columns: 15% auto 15%;
 	grid-template-rows: 90px auto;
 }
+.likedlistbody{
+	display:grid;
+	grid-template-columns: 15% auto 15%;
+	grid-template-rows: 90px auto;
+}
 
 .beerlist{
 	padding-top: 5px;
@@ -289,7 +294,14 @@ a:active { text-decoration: none; }
 	grid-row-start: 2;
 	grid-row-end: 3;
 }
-
+.likedlist{
+	padding-top: 5px;
+	margin-bottom: 10px;
+	grid-column-start: 2;
+	grid-column-end: 3;
+	grid-row-start: 2;
+	grid-row-end: 3;
+}
 .topx{
 	width: 100%;
 	display:grid;
@@ -348,7 +360,18 @@ a:active { text-decoration: none; }
 	display:grid;
 	grid-template-columns: 30% 20% auto;
 }
-
+.likedlistitem{
+	min-height: 100px;
+	width: 100%;
+	margin-top: 10px;
+	padding: 10px;
+	border: 3px solid #fcae49;
+	border-radius: 15px;
+	color: pink;
+	width: 100%;
+	display:grid;
+	grid-template-columns: 30% 40% auto;
+}
 .beerpicture{
 	grid-column-start: 2;
 	grid-column-end: 3;
