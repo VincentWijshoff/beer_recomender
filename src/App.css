@@ -67,18 +67,18 @@ html, body {
   top:0;
   background-color: #5511107a;
   border: 1.5px solid #290100;
-  font-size: calc(10px + 2vmin);
+  font-size: calc(10px + 1vmin);
   padding-top: 2px;
   padding-bottom: 2px;
 }
 
 .footerItem {
   color: #fc8c8a;
-  font-size: 50px;
+  font-size: 35px;
   background-color: #5311109f;
   border: 2px solid #290100;
   border-radius: 15px;
-  padding: 6px;
+  padding: 4px;
 }
 
 .footerItem:hover {
@@ -390,6 +390,7 @@ a:active { text-decoration: none; }
 	border: 3px solid #fcae49;
 	border-radius: 15px;
 	padding: 10px;
+	overflow: auto;
 }
 
 .likedislike{
