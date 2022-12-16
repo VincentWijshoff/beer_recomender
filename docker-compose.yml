@@ -9,6 +9,8 @@ services:
       dockerfile: Dockerfile
     ports:
       - 3440:3000
+    env_file:
+      - .env
       
   backend:
     container_name: beer_backend
