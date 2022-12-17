@@ -10,7 +10,7 @@ from generateExplenation import *
 api = Flask(__name__)
 
 #  get the beer from the given ID
-@api.route('/beerfromid/<string:beerid>/<string:uid>', methods=['GET'])
+@api.route('/api/beerfromid/<string:beerid>/<string:uid>', methods=['GET'])
 def get_beer_from_id(beerid, uid):
   u:user = getUserById(uid)
   beer = getBeerByID(beerid)
@@ -26,7 +26,7 @@ def get_beer_from_id(beerid, uid):
 
 
 #  get the next recommended beer for this person
-@api.route('/nextbeerforuser/<string:uid>', methods=['GET'])
+@api.route('/api/nextbeerforuser/<string:uid>', methods=['GET'])
 def get_next_beer_from_id(uid):
   u:user = getUserById(uid)
   beer = generate_recommendation(u)
@@ -45,7 +45,7 @@ def getUserById(uid):
   return u
 
 #  get the beer list for given question
-@api.route('/beerlistforquestion/<int:qid>', methods=['GET'])
+@api.route('/api/beerlistforquestion/<int:qid>', methods=['GET'])
 def get_beer_list_from_qid(qid):
   res = []
   beerIdsPerQuestion = [
@@ -64,7 +64,7 @@ def get_beer_list_from_qid(qid):
 
 
 #  get the beer list for given user
-@api.route('/beerlistforuser/<string:uid>', methods=['GET'])
+@api.route('/api/beerlistforuser/<string:uid>', methods=['GET'])
 def get_beer_list_from_id(uid):
   u:user = getUserById(uid)
   res = []
@@ -91,7 +91,7 @@ def get_beer_list_from_id(uid):
 
 
 #  get the list of liked beers for the user
-@api.route('/likedbeersforuser/<string:uid>', methods=['GET'])
+@api.route('/api/likedbeersforuser/<string:uid>', methods=['GET'])
 def get_liked_beers_from_id(uid):
   u:user = getUserById(uid)
   res = []
@@ -102,7 +102,7 @@ def get_liked_beers_from_id(uid):
 
 
 #  like a beer
-@api.route('/likebeer/<string:beerid>/<string:uid>', methods=['GET'])
+@api.route('/api/likebeer/<string:beerid>/<string:uid>', methods=['GET'])
 def like_beer_from_id(beerid, uid):
   u:user = getUserById(uid)
   u.likeBeer(beerid)
@@ -110,7 +110,7 @@ def like_beer_from_id(beerid, uid):
 
 
 #  dislike a beer
-@api.route('/dislikebeer/<string:beerid>/<string:uid>', methods=['GET'])
+@api.route('/api/dislikebeer/<string:beerid>/<string:uid>', methods=['GET'])
 def dislike_beer_from_id(beerid, uid):
   u = getUserById(uid)
   u.dislikeBeer(beerid)
@@ -118,7 +118,7 @@ def dislike_beer_from_id(beerid, uid):
 
 
 # login
-@api.route('/login/<string:uName>/<string:pWord>', methods=['GET'])
+@api.route('/api/login/<string:uName>/<string:pWord>', methods=['GET'])
 def login(uName, pWord):
   for k in users.keys():
     v = users[k]
@@ -131,7 +131,7 @@ def login(uName, pWord):
 
 
 # register
-@api.route('/register/<string:uName>/<string:pWord>', methods=['GET'])
+@api.route('/api/register/<string:uName>/<string:pWord>', methods=['GET'])
 def register(uName, pWord):
   uid = str(uuid.uuid4())
   while uid in users.keys():
@@ -143,7 +143,7 @@ def register(uName, pWord):
 
 
 # remove liked beer
-@api.route('/removelikedbeer/<string:beerid>/<string:uid>', methods=['GET'])
+@api.route('/api/removelikedbeer/<string:beerid>/<string:uid>', methods=['GET'])
 def remove_beer_from_user(beerid, uid):
   u = getUserById(uid)
   u.removeLikedBeer(beerid)

@@ -8,13 +8,11 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - 3440:3000
+      - 3441:3000
     environment:
-      - REACT_APP_API_BASE_URL=host.docker.internal
+      - REACT_APP_API=http://localhost:3440/api
     networks:
       - beer
-    extra_hosts:
-      - 'host.docker.internal:host-gateway'
       
   backend:
     container_name: beer_backend
@@ -24,7 +22,22 @@ services:
     networks:
       - beer
     ports:
-      - 80:8080
+      - 3442:8080
+
+  engine:
+    container_name: beer_engine
+    build:
+      context: .
+      dockerfile: Dockerfile.proxy
+    networks:
+      - beer
+    ports:
+      - 3440:80
+    extra_hosts:
+      - 'host.docker.internal:host-gateway'
+    depends_on:
+      - backend
+      - frontend
 
 networks:
   beer:
