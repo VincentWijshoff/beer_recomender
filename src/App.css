@@ -422,6 +422,10 @@ a:active { text-decoration: none; }
 	text-align: center;
 }
 
+.beerexpl{
+	white-space: pre-line;
+}
+
 #chk{
 	display: none;
 }
@@ -671,7 +675,7 @@ input{
 		background-color: rgb(255, 220, 196);
 		max-width: 800px;
 		width: 100%;
-		height: 400px;
+		height: 700px;
 		padding: 10px 30px;
 		position: absolute;
 		left: calc(50% - 400px);
@@ -717,4 +721,9 @@ input{
 
 	  .modalTItle{
 		  color: black;
+	  }
+
+	  .modalBeerInfo{
+		color: black;
+		white-space: pre-line;
 	  }

@@ -35,7 +35,7 @@ const OneBeer = () => {
                         <label className="modal-close" for="modal-toggle">x</label>
                         <h2 className="modalTItle">{data.name}</h2>
                         <hr />
-                        <p className="modalTItle">{data.beerInfo}</p>
+                        <p className="modalBeerInfo">{data.beerInfo}</p>
                         <label className="modal-close button" for="modal-toggle">Close</label>
                         </div>
                     </div>
@@ -44,7 +44,7 @@ const OneBeer = () => {
             {/* then an explenation */}
             <div className="beerdescription">
                 <div className="beername">{data.name}</div>
-                <div>{data.explenation}</div>
+                <div className="beerexpl">{data.explenation}</div>
             </div>
             {/* then a like/dislike button */}
             <div className="likedislike">
