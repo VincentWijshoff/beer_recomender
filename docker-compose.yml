@@ -25,7 +25,7 @@ services:
       - 3442:8080
 
   engine:
-    container_name: beer_engine
+    container_name: beer_proxy
     build:
       context: .
       dockerfile: Dockerfile.proxy
