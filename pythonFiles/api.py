@@ -1,6 +1,6 @@
 import random
 import uuid
-from flask import Flask, json
+from flask import Flask, json, jsonify
 from generate_recommendation import generate_recommendation
 from getBeerByID import getBeerByID
 from constants import *
@@ -22,7 +22,7 @@ def get_beer_from_id(beerid, uid):
     expl = generateExplenation2(u,beer)
   elif key == 2:
     expl = generateExplenation3(u,beer)
-  response = flask.jsonify({"name": beer["nameDisplay"], "image": beer["labels"]["medium"], "explenation":expl, "id":beerid})
+  response = jsonify({"name": beer["nameDisplay"], "image": beer["labels"]["medium"], "explenation":expl, "id":beerid})
   response.headers.add('Access-Control-Allow-Origin', '*')
   return response
 
@@ -40,7 +40,7 @@ def get_next_beer_from_id(uid):
     expl = generateExplenation2(u,beer)
   elif key == 2:
     expl = generateExplenation3(u,beer)
-  response = flask.jsonify({"name": beer["nameDisplay"], "image": beer["labels"]["medium"], "explenation":expl, "id":beer["id"], "beerInfo": "beerinfo"})
+  response = jsonify({"name": beer["nameDisplay"], "image": beer["labels"]["medium"], "explenation":expl, "id":beer["id"], "beerInfo": "beerinfo"})
   response.headers.add('Access-Control-Allow-Origin', '*')
   return response
 
@@ -64,7 +64,7 @@ def get_beer_list_from_qid(qid):
     rec = getBeerByID(i)
     labels = {"abv": rec["abv"], "servingTemperature": rec["servingTemperature"], "ibu": rec["ibu"], "color": rec["srm"]["hex"], "organic": "Yes" if rec["isOrganic"] == "Y" else "No"}
     res.append({"picture": rec["labels"]["icon"], "name": rec["nameDisplay"], "id": rec["id"], "labels": labels})
-  response = flask.jsonify(res)
+  response = jsonify(res)
   response.headers.add('Access-Control-Allow-Origin', '*')
   return response
 
@@ -93,7 +93,7 @@ def get_beer_list_from_id(uid):
     elif key == 2:
       expl = generateExplenation3(u,rec)
     res.append({"picture": rec["labels"]["medium"], "name": rec["nameDisplay"], "description":expl, "id": rec["id"]})
-  response = flask.jsonify(res)
+  response = jsonify(res)
   response.headers.add('Access-Control-Allow-Origin', '*')
   return response
 
@@ -106,7 +106,7 @@ def get_liked_beers_from_id(uid):
   for b in u.getLikedBeers():
     b = getBeerByID(b)
     res += [{"picture": b["labels"]["medium"], "name": b["nameDisplay"], "id":b["id"]}]
-  response = flask.jsonify(res)
+  response = jsonify(res)
   response.headers.add('Access-Control-Allow-Origin', '*')
   return response
 
@@ -116,7 +116,7 @@ def get_liked_beers_from_id(uid):
 def like_beer_from_id(beerid, uid):
   u:user = getUserById(uid)
   u.likeBeer(beerid)
-  response = flask.jsonify({})
+  response = jsonify({})
   response.headers.add('Access-Control-Allow-Origin', '*')
   return response
 
@@ -126,7 +126,7 @@ def like_beer_from_id(beerid, uid):
 def dislike_beer_from_id(beerid, uid):
   u = getUserById(uid)
   u.dislikeBeer(beerid)
-  response = flask.jsonify({}})
+  response = jsonify({})
   response.headers.add('Access-Control-Allow-Origin', '*')
   return response
 
@@ -138,14 +138,14 @@ def login(uName, pWord):
     v = users[k]
     if v[0] == uName:
       if v[1] == pWord:
-        response = flask.jsonify({"response": True, "uid": k})
+        response = jsonify({"response": True, "uid": k})
         response.headers.add('Access-Control-Allow-Origin', '*')
         return response
       else:
-        response = flask.jsonify({"response": False})
+        response = jsonify({"response": False})
         response.headers.add('Access-Control-Allow-Origin', '*')
         return response
-  response = flask.jsonify({"response": False})
+  response = jsonify({"response": False})
   response.headers.add('Access-Control-Allow-Origin', '*')
   return response
 
@@ -159,7 +159,7 @@ def register(uName, pWord):
   newUser = user(uid)
   newUser.setExplenationKey(random.randint(0,2))
   users[uid] = [uName, pWord, newUser]
-  response = flask.jsonify({"uid": uid})
+  response = jsonify({"uid": uid})
   response.headers.add('Access-Control-Allow-Origin', '*')
   return response
 
@@ -169,7 +169,7 @@ def register(uName, pWord):
 def remove_beer_from_user(beerid, uid):
   u = getUserById(uid)
   u.removeLikedBeer(beerid)
-  response = flask.jsonify({})
+  response = jsonify({})
   response.headers.add('Access-Control-Allow-Origin', '*')
   return response
 
