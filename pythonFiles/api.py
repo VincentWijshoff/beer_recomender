@@ -4,6 +4,7 @@ from flask import Flask, json, jsonify
 from generate_recommendation import generate_recommendation
 from getBeerByID import getBeerByID
 from constants import *
+from beerInfo import generateInfo
 from user import user
 from generateExplenation import *
 
@@ -22,7 +23,8 @@ def get_beer_from_id(beerid, uid):
     expl = generateExplenation2(u,beer)
   elif key == 2:
     expl = generateExplenation3(u,beer)
-  response = jsonify({"name": beer["nameDisplay"], "image": beer["labels"]["medium"], "explenation":expl, "id":beerid})
+  beerInfo = generateInfo(beer)
+  response = jsonify({"name": beer["nameDisplay"], "image": beer["labels"]["medium"], "explenation":expl, "id":beerid, "beerInfo": beerInfo})
   response.headers.add('Access-Control-Allow-Origin', '*')
   return response
 
@@ -40,7 +42,8 @@ def get_next_beer_from_id(uid):
     expl = generateExplenation2(u,beer)
   elif key == 2:
     expl = generateExplenation3(u,beer)
-  response = jsonify({"name": beer["nameDisplay"], "image": beer["labels"]["medium"], "explenation":expl, "id":beer["id"], "beerInfo": "beerinfo"})
+  beerInfo = generateInfo(beer)
+  response = jsonify({"name": beer["nameDisplay"], "image": beer["labels"]["medium"], "explenation":expl, "id":beer["id"], "beerInfo": beerInfo})
   response.headers.add('Access-Control-Allow-Origin', '*')
   return response
 
