@@ -11,6 +11,7 @@ const OneBeer = () => {
         image: "",
         explenation: "",
         id: 0,
+        beerInfo: []
     });
     const uid = getUID();
     useEffect(() => {
@@ -21,7 +22,7 @@ const OneBeer = () => {
         })
     }, []);
     return (
-        <div className="beerbody onebeerbody">
+        <div className="beerbody">
             {/* we need a picture of a beer */}
             <div className="beerpicture">
                 <div className="beerimagecenter">
@@ -32,11 +33,22 @@ const OneBeer = () => {
                     <button>More info</button>
                     <div className="modal-backdrop">
                         <div className="modal-content">
-                        <label className="modal-close" for="modal-toggle">x</label>
+                        <label className="modal-close" for="modal-toggle">close</label>
                         <h2 className="modalTItle">{data.name}</h2>
                         <hr />
-                        <p className="modalBeerInfo">{data.beerInfo}</p>
-                        <label className="modal-close button" for="modal-toggle">Close</label>
+                        {
+                            data.beerInfo.map((info) => {
+                                return(
+                                    <div>
+                                        <div className="modalBeerInfoHeader">{info[0]}</div>
+                                        <div className="modalBeerInfo">{info[1]}</div>
+                                    </div>
+
+                                    
+                            )})
+                        }
+                        
+                        {/* <label className="modal-close button" for="modal-toggle">Close</label> */}
                         </div>
                     </div>
                 </div>

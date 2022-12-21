@@ -26,8 +26,8 @@ const InitialSurvey = () => {
     let likedBeers = [];
 
     return (
-        <div>
-            <div className="footer">
+        <div className="initialSurvey">
+            <div className="footer-init-survey">
                 <div className="initialsurveyTitle">Initial Survey</div>
             </div>
             <div className="initialsurveybody">

@@ -59,17 +59,36 @@ html, body {
 }
 
 .footer {
-  min-width: 100%;
-  display: flex;
-  flex-direction: row;
+	min-width: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	top:0;
+	background-color: #5511107a;
+	border: 1.5px solid #290100;
+	font-size: calc(10px + 1vmin);
+	padding-top: 2px;
+	padding-bottom: 2px;
+	margin-bottom: 10pt;
+  }
+
+.footer-init-survey {
+  width: 100%;
+  display: block;
+  text-align: center;
   justify-content: space-around;
-  position:fixed;
-  top:0;
+  /* position:fixed;
+  top:0; */
   background-color: #5511107a;
   border: 1.5px solid #290100;
   font-size: calc(10px + 1vmin);
   padding-top: 2px;
   padding-bottom: 2px;
+  margin-bottom: 5pt;
+}
+
+.left {
+	align-self: left;
 }
 
 .footerItem {
@@ -91,25 +110,31 @@ a:visited { text-decoration: none; }
 a:hover { text-decoration: none; }
 a:active { text-decoration: none; }
 
+.initialSurvey{
+	height:fit-content;
+}
+
 .initialsurveyTitle{
 	color: #fc8c8a;
 	font-size: 50px;
 	background-color: #5311109f;
 	border: 2px solid #290100;
 	border-radius: 15px;
+	width: 30%;
+	margin-left: auto;
+	margin-right: auto;
 	padding: 6px;
-
 }
 
 .initialsurveybody{
 	height: 100%;
-	min-height: 80vh;
+	/* min-height: 80vh; */
 	padding-left: 30px;
 	padding-right: 30px;
-	display: grid;
+	/* display: grid;
 	row-gap: 20px;
 	grid-template-columns: auto auto auto;
-	grid-template-rows: 15% 10% 30% 20%;
+	grid-template-rows: 15% 10% 30% 20%; */
 	
 }
 
@@ -128,9 +153,10 @@ a:active { text-decoration: none; }
 	padding-top: 5px;
 	margin-bottom: 10px;
 	grid-column-start: 2;
-	grid-column-end: 3;
-	grid-row-start: 3;
+	/* grid-column-end: 3;
+	grid-row-start: 3; */
 	grid-row-end: 4;
+	height: fit-content;
 }
 
 .nextQuestionButton{
@@ -151,18 +177,18 @@ a:active { text-decoration: none; }
 }
 
 .divNextQuestion{
-	margin-top: 40pt;
+	margin-top: 10pt;
 	color: pink;
-	height: 40pt;
+	height: fit-content;
 	text-align: center;
-	min-width: 100%;
-	display: flex;
-	flex-direction: row;
+	width: 100%;
+	/* display: flex;
+	flex-direction: row; */
 	justify-content: space-around;
-	position:fixed;
+	/* position:fixed; */
 	background-color: #5511107a;
 	border: 1.5px solid #290100;
-	font-size: calc(10px + 2vmin);
+	/* font-size: calc(10px + 2vmin); */
 	padding-top: 2px;
 	padding-bottom: 2px;
 }
@@ -265,9 +291,11 @@ a:active { text-decoration: none; }
 
 .beerbody{
 	height: 100%;
-	min-height: 80vh;
+	/* min-height: 80vh; */
 	padding-left: 30px;
 	padding-right: 30px;
+	margin-bottom: 5%;
+	margin-top: 5%;
 }
 .onebeerbody{
 	display: grid;
@@ -279,11 +307,13 @@ a:active { text-decoration: none; }
 	display:grid;
 	grid-template-columns: 15% auto 15%;
 	grid-template-rows: 90px auto;
+	margin-top: -5%;
 }
 .likedlistbody{
 	display:grid;
 	grid-template-columns: 15% auto 15%;
 	grid-template-rows: 90px auto;
+	margin-top: -5%;
 }
 
 .beerlist{
@@ -379,6 +409,7 @@ a:active { text-decoration: none; }
 	grid-row-end: 3;
 	display:grid;
 	grid-template-rows: 80% 20%;
+	margin-bottom: 20pt;
 }
 
 .beerimagecenter {
@@ -389,23 +420,26 @@ a:active { text-decoration: none; }
 }
 
 .beerdescription{
-	grid-column-start: 2;
+	/* grid-column-start: 2;
 	grid-column-end: 3;
 	grid-row-start: 3;
-	grid-row-end: 4;
+	grid-row-end: 4; */
 	border: 3px solid #fcae49;
 	border-radius: 15px;
 	padding: 10px;
 	overflow: auto;
+	width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+	margin-bottom: 10pt;
 }
 
 .likedislike{
-	grid-column-start: 2;
-	grid-column-end: 3;
-	grid-row-start: 4;
-	grid-row-end: 5;
 	display: flex;
-	justify-content: space-around;
+    justify-content: space-around;
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .LoginBody {
@@ -419,7 +453,10 @@ a:active { text-decoration: none; }
 }
 
 .beername{
-	text-align: center;
+	color: navajowhite;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 10pt;
 }
 
 .beerexpl{
@@ -685,6 +722,7 @@ input{
 		pointer-events: auto;
 		cursor: auto;
 		box-shadow: 0 3px 7px rgba(0, 0, 0, 0.6);
+		overflow: auto;
 	  }
 	  @media (max-width: 400px) {
 	  .modal-container #modal-toggle:checked ~ .modal-backdrop .modal-content { left: 0; }
@@ -695,9 +733,9 @@ input{
 		right: 2px;
 		top: 0;
 		padding-top: 7px;
-		font-size: 10px;
-		width: 25px;
-		height: 28px;
+		font-size: 20px;
+		/* width: 25px;
+		height: 28px; */
 		font-weight: bold;
 		text-align: center;
 		cursor: pointer;
@@ -726,4 +764,14 @@ input{
 	  .modalBeerInfo{
 		color: black;
 		white-space: pre-line;
+		display: inline-block;
 	  }
+
+	  .modalBeerInfoHeader{
+		color: black;
+		white-space: pre-line;
+		display: inline-block;
+		font-weight: bold;
+		margin-right: 5pt;
+	  }
+
