@@ -11,7 +11,8 @@ const OneBeer = () => {
         image: "",
         explenation: "",
         id: 0,
-        beerInfo: []
+        beerInfo: [],
+        explanationid: 0
     });
     const uid = getUID();
     useEffect(() => {
@@ -55,7 +56,11 @@ const OneBeer = () => {
             </div>
             {/* then an explenation */}
             <div className="beerdescription">
-                <div className="beername">{data.name}</div>
+                <div className="divname">
+                    <div className="beername">{data.name}</div>
+                    <div className="explanID">{"Explanation " + data.explanationid}</div>
+                </div>
+                
                 <div className="beerexpl">{data.explenation}</div>
             </div>
             {/* then a like/dislike button */}

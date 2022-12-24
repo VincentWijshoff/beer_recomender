@@ -24,7 +24,7 @@ def get_beer_from_id(beerid, uid):
   elif key == 2:
     expl = generateExplenation3(u,beer)
   beerInfo = generateInfo(beer)
-  response = jsonify({"name": beer["nameDisplay"], "image": beer["labels"]["medium"], "explenation":expl, "id":beerid, "beerInfo": beerInfo})
+  response = jsonify({"name": beer["nameDisplay"], "image": beer["labels"]["medium"], "explenation":expl, "id":beerid, "beerInfo": beerInfo, "explanationid": u.getExplenationKey()})
   response.headers.add('Access-Control-Allow-Origin', '*')
   return response
 
@@ -43,7 +43,7 @@ def get_next_beer_from_id(uid):
   elif key == 2:
     expl = generateExplenation3(u,beer)
   beerInfo = generateInfo(beer)
-  response = jsonify({"name": beer["nameDisplay"], "image": beer["labels"]["medium"], "explenation":expl, "id":beer["id"], "beerInfo": beerInfo})
+  response = jsonify({"name": beer["nameDisplay"], "image": beer["labels"]["medium"], "explenation":expl, "id":beer["id"], "beerInfo": beerInfo, "explanationid": u.getExplenationKey()})
   response.headers.add('Access-Control-Allow-Origin', '*')
   return response
 

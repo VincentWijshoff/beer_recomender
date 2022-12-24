@@ -453,15 +453,36 @@ html, body {
   }
   
   .beername{
-	  color: navajowhite;
-	  text-align: center;
-	  font-weight: bold;
-	  margin-bottom: 10pt;
+	color: navajowhite;
+	font-weight: bold;
+    display: inline-block;
+	grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    margin-bottom: 10pt;
   }
   
-  .beerexpl{
-	  white-space: pre-line;
-  }
+.beerexpl{
+	white-space: pre-line;
+	color: #f7b1b1;
+}
+
+.divname{
+	width: 100%;
+    text-align: center;
+    display: grid;
+    grid-template-columns: 80% 20%;
+    grid-template-rows: auto;
+}
+
+.explanID{
+	font-size: small;
+    display: inline-block;
+    float: right;
+    color: navajowhite;
+    grid-column-start: 2;
+    grid-row-start: 1;
+}
   
   #chk{
 	  display: none;
